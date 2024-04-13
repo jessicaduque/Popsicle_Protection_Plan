@@ -16,7 +16,7 @@ public class Snowball : MonoBehaviour
 
     private void OnEnable()
     {
-        _rb.velocity = Vector3.forward * _speed;
+        _rb.velocity = -Vector2.up * _speed;
     }
 
     private void OnDisable()

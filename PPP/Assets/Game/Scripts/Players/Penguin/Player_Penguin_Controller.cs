@@ -1,24 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-public class Player_Penguin_Controller : MonoBehaviour, IDamageable
+using Utils.Singleton;
+public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, IDamageable
 {
     // Input fields
     private Player_Penguin _playerPenguinActionsAsset;
     private InputAction _move;
 
     // Movement fields
+    private Rigidbody2D _rb;
     [SerializeField] private float _speed = 7f;
 
     // Health
-    private bool _hasPopsicle = true;
     private bool _isDead;
     private int _health = 1;
 
-    private void Awake()
+    // Popsicle
+    private bool _hasPopsicle = true;
+    [SerializeField] private GameObject _popsicle;
+
+    private new void Awake()
     {
+        _rb = GetComponent<Rigidbody2D>();
         _playerPenguinActionsAsset = new Player_Penguin();
     }
 
@@ -45,9 +48,18 @@ public class Player_Penguin_Controller : MonoBehaviour, IDamageable
         BodyRotate();
     }
 
+    #endregion
+
+    #region Sprites
+
     private void BodyRotate()
     {
         // Change sprites
+    }
+
+    private void ChangeSpritePopsicle(bool state)
+    {
+
     }
 
     #endregion
@@ -90,7 +102,8 @@ public class Player_Penguin_Controller : MonoBehaviour, IDamageable
 
         if (_hasPopsicle)
         {
-            // Code to drop popscile
+            SetHasPopsicle(false);
+            _popsicle.SetActive(true);
             return;
         }
 
@@ -101,9 +114,32 @@ public class Player_Penguin_Controller : MonoBehaviour, IDamageable
             // Code for penguin death
             _isDead = true;
         }
-    } 
+    }
 
     #endregion
 
+    #region Set
 
+    public void SetHasPopsicle(bool state)
+    {
+        _hasPopsicle = state;
+        _rb.velocity = Vector2.zero;
+        ChangeSpritePopsicle(state);
+    }
+
+    public void SetVelocity()
+    {
+        
+    }
+
+    #endregion
+
+    #region Get
+
+    public int GetVelocityX()
+    {
+        return (_move.ReadValue<Vector2>().x > 0 ? -1 : 1);
+    }
+
+    #endregion
 }

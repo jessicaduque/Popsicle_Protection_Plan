@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +19,7 @@ public class Player_Polar_Bear_Controller : MonoBehaviour, IDamageable
     // Attack
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private Pool _attackPoolItem;
+    [SerializeField] private float _attackCooldownTime;
     private bool _canAttack = true;
 
     private PoolManager _poolManager => PoolManager.I;
@@ -124,11 +124,12 @@ public class Player_Polar_Bear_Controller : MonoBehaviour, IDamageable
 
         _poolManager.GetObject(_attackPoolItem.tagPool, _attackPoint.position, _attackPoint.rotation);
         StartCoroutine(AttackCoolDown());
+        _canAttack = false;
     }
 
     private IEnumerator AttackCoolDown()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(_attackCooldownTime);
 
         _canAttack = true;
     }
