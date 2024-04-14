@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: snow_tileset_1
+  m_Name: snow_tileset (1)_3
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1753505828, guid: 9645e5c6217008a41b114899672b8606, type: 3}
+  m_Sprite: {fileID: 934699111, guid: bce0e8d16c10e974bbc894c7312201e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

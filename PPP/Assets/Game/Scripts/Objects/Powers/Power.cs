@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Power : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool _canUsePower;
+    
+    public UnityAction powerActivatedEvent;
+
+    public virtual void UsePower()
     {
-        
+        if (!_canUsePower)
+            return;
+
+        powerActivatedEvent?.Invoke();
+        SetCanUsePower(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    #region Set
+
+    public void SetCanUsePower(bool state)
     {
-        
+        _canUsePower = state;
     }
+
+    #endregion
 }

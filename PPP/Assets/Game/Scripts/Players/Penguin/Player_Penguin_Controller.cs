@@ -127,11 +127,6 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
         ChangeSpritePopsicle(state);
     }
 
-    public void SetVelocity()
-    {
-        
-    }
-
     #endregion
 
     #region Get
