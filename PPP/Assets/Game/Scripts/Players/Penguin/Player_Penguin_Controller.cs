@@ -19,6 +19,8 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     private bool _hasPopsicle = true;
     [SerializeField] private GameObject _popsicle;
 
+    private LevelController _levelController => LevelController.I;
+
     private new void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -27,12 +29,14 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 
     private void OnEnable()
     {
-        EnableInputs();
+        _levelController.beginLevel += EnableInputs;
+        _levelController.timeUp += DisableInputs;
     }
 
     private void OnDisable()
     {
-        DisableInputs();
+        _levelController.beginLevel -= EnableInputs;
+        _levelController.timeUp -= DisableInputs;
     }
 
     private void FixedUpdate()

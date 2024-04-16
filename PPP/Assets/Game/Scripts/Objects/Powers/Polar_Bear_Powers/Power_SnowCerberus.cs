@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
@@ -9,7 +7,7 @@ public class Power_SnowCerberus : Power
     [SerializeField] private Pool _bigSnowballPoolItem;
     [SerializeField] private float _bigSnowballSpawnY;
 
-    private CanvasGroup[] _snowFallShadowsCanvasGroup = new CanvasGroup[3];
+    private SpriteRenderer[] _snowFallShadowsSpriteRenderers = new SpriteRenderer[3];
     private float _shadowFadeTime = 4;
     private float _snowballFallTime = 1;
 
@@ -30,9 +28,8 @@ public class Power_SnowCerberus : Power
         {
             snowBallSpawnPoint.x = _snowFallShadows[shadowsArray].shadowPoints[i].transform.position.x;
 
-            _snowFallShadowsCanvasGroup[i] = _snowFallShadows[shadowsArray].shadowPoints[i].GetComponent<CanvasGroup>();
-
-            _snowFallShadowsCanvasGroup[i].DOFade(1, _shadowFadeTime).SetDelay(i * 0.4f);
+            _snowFallShadowsSpriteRenderers[i] = _snowFallShadows[shadowsArray].shadowPoints[i].GetComponent<SpriteRenderer>();
+            DOTween.To(() => _snowFallShadowsSpriteRenderers[i].color.a, x => _snowFallShadowsSpriteRenderers[i].color = new Color(0, 0, 0, x), 0, _shadowFadeTime).SetDelay(i * 0.4f);
             GameObject bigSnowball =_poolManager.GetObject(_bigSnowballPoolItem.tagPool, snowBallSpawnPoint, Quaternion.identity);
             bigSnowball.transform.DOMoveY(_snowFallShadows[shadowsArray].shadowPoints[i].transform.position.y, _snowballFallTime).SetDelay(i * 0.4f + (_shadowFadeTime - _snowballFallTime));
 

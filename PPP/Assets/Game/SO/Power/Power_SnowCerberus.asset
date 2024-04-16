@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4552e4ffdd97ac2409c9db7f353b2ba6, type: 3}
+  m_Name: Power_SnowCerberus
+  m_EditorClassIdentifier: 
+  power_name: Snow Cerberus
+  power_brief_description: 
+  power_long_description: 
+  power_sprite: {fileID: 0}
+  power_rechargeTime: 8
+  power_useTime: 10
+  power_isPenguinPower: 0
+  power_controllerPrefab: {fileID: 7938342612597497319, guid: 0398009849cbc3a4395615ef536108e5, type: 3}

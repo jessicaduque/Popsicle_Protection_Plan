@@ -22,7 +22,10 @@ public class Player_Polar_Bear_Controller : MonoBehaviour, IDamageable
     [SerializeField] private float _attackCooldownTime;
     private bool _canAttack = true;
 
+    // Power
+    [SerializeField] private Power_SO _power;
     private PoolManager _poolManager => PoolManager.I;
+    private LevelController _levelController => LevelController.I;
 
     private void Awake()
     {
@@ -84,11 +87,10 @@ public class Player_Polar_Bear_Controller : MonoBehaviour, IDamageable
 
     #endregion
 
-    #region Powers
+    #region Power
 
     private void DoPowerControl(InputAction.CallbackContext obj)
     {
-        throw new NotImplementedException();
     }
 
     #endregion
@@ -122,7 +124,7 @@ public class Player_Polar_Bear_Controller : MonoBehaviour, IDamageable
             return;
         }
 
-        _poolManager.GetObject(_attackPoolItem.tagPool, _attackPoint.position, _attackPoint.rotation);
+        _poolManager.GetObject(_attackPoolItem.tagPool, _attackPoint.position, Quaternion.identity);
         StartCoroutine(AttackCoolDown());
         _canAttack = false;
     }
