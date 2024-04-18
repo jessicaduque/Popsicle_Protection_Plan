@@ -54,10 +54,10 @@ public class BlackScreenController : Singleton<BlackScreenController>
         _blackScreen_CanvasGroup.DOFade(0, _blackFadeTime).onComplete = () => _blackScreen_Panel.SetActive(false);
     }
 
-    public void FadeOutScene(string nomeScene)
+    public void FadeOutScene(string nextScene)
     {
         _blackScreen_Panel.SetActive(true);
-        _blackScreen_CanvasGroup.DOFade(1, _blackFadeTime).OnComplete(() => SceneManager.LoadScene(nomeScene)).SetUpdate(true);
+        _blackScreen_CanvasGroup.DOFade(1, _blackFadeTime).OnComplete(() => SceneManager.LoadScene(nextScene)).SetUpdate(true);
     }
 
     public void RestartGame()

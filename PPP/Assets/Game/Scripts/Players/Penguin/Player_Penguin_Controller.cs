@@ -12,19 +12,23 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     [SerializeField] private float _speed = 7f;
 
     // Health
-    private bool _isDead;
+    public bool _isDead { get; private set; }
     private int _health = 1;
 
     // Popsicle
-    private bool _hasPopsicle = true;
+    public bool _hasPopsicle { get; private set; } = true;
     [SerializeField] private GameObject _popsicle;
 
+    // Power
+    [SerializeField] private Power_SO _powerSO;
+    [SerializeField] private Power _powerScript;
     private LevelController _levelController => LevelController.I;
 
     private new void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _playerPenguinActionsAsset = new Player_Penguin();
+        _move = _playerPenguinActionsAsset.Player.Move;
     }
 
     private void OnEnable()
@@ -74,7 +78,6 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     {
         _playerPenguinActionsAsset.Player.Power.started += DoPowerControl;
 
-        _move = _playerPenguinActionsAsset.Player.Move;
         _playerPenguinActionsAsset.Player.Enable();
     }
 
@@ -129,6 +132,13 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
         _hasPopsicle = state;
         _rb.velocity = Vector2.zero;
         ChangeSpritePopsicle(state);
+    }
+
+    public void SetPower(Power_SO power)
+    {
+        _powerSO = power;
+        GameObject powerController = Instantiate(power.power_controllerPrefab, Vector2.zero, Quaternion.identity);
+        _powerScript = powerController.GetComponent<Power>();
     }
 
     #endregion

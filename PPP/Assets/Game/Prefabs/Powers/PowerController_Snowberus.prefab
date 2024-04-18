@@ -987,7 +987,7 @@ GameObject:
   - component: {fileID: 6062570748539205714}
   - component: {fileID: 3427182819969039342}
   m_Layer: 0
-  m_Name: PowerController_SnowCerberus
+  m_Name: PowerController_Snowberus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

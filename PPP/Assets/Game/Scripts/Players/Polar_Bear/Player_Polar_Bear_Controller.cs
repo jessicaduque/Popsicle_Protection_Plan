@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-public class Player_Polar_Bear_Controller : MonoBehaviour, IDamageable
+using Utils.Singleton;
+public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controller>, IDamageable
 {
     // Input fields
     private Player_Polar_Bear _playerPolarBearActionsAsset;
@@ -13,7 +13,7 @@ public class Player_Polar_Bear_Controller : MonoBehaviour, IDamageable
     [SerializeField] private float _speed = 8f;
 
     // Health
-    private bool _isDead;
+    public bool _isDead { get; private set; }
     private int _health = 1;
 
     // Attack
@@ -23,23 +23,29 @@ public class Player_Polar_Bear_Controller : MonoBehaviour, IDamageable
     private bool _canAttack = true;
 
     // Power
-    [SerializeField] private Power_SO _power;
+    [SerializeField] private Power_SO _powerSO;
+    [SerializeField] private Power _powerScript;
+
     private PoolManager _poolManager => PoolManager.I;
     private LevelController _levelController => LevelController.I;
 
-    private void Awake()
+    private new void Awake()
     {
         _playerPolarBearActionsAsset = new Player_Polar_Bear();
+
+        _move = _playerPolarBearActionsAsset.Player.Move;
     }
 
     private void OnEnable()
     {
-        EnableInputs();
+        _levelController.beginLevel += EnableInputs;
+        _levelController.timeUp += DisableInputs;
     }
 
     private void OnDisable()
     {
-        DisableInputs();
+        _levelController.beginLevel -= EnableInputs;
+        _levelController.timeUp -= DisableInputs;
     }
 
     private void FixedUpdate()
@@ -73,7 +79,6 @@ public class Player_Polar_Bear_Controller : MonoBehaviour, IDamageable
         _playerPolarBearActionsAsset.Player.Power.started += DoPowerControl;
         _playerPolarBearActionsAsset.Player.Attack.started += DoAttackControl;
 
-        _move = _playerPolarBearActionsAsset.Player.Move;
         _playerPolarBearActionsAsset.Player.Enable();
     }
 
@@ -134,6 +139,17 @@ public class Player_Polar_Bear_Controller : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(_attackCooldownTime);
 
         _canAttack = true;
+    }
+
+    #endregion
+
+
+    #region Set
+    public void SetPower(Power_SO power)
+    {
+        _powerSO = power;
+        GameObject powerController = Instantiate(power.power_controllerPrefab, Vector2.zero, Quaternion.identity);
+        _powerScript = powerController.GetComponent<Power>();
     }
 
     #endregion

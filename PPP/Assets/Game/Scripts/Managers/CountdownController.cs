@@ -13,7 +13,18 @@ public class CountdownController : Singleton<CountdownController>
 
     //private AudioManager _audioManager => AudioManager.I;
 
+    protected new void Awake()
+    {
+        
+    }
+
     private void Start()
+    {
+        StartCoroutine(CountdownToStart());
+    }
+
+    #region Start Countdown
+    public void StartCountdown()
     {
         StartCoroutine(CountdownToStart());
     }
@@ -46,7 +57,9 @@ public class CountdownController : Singleton<CountdownController>
 
     }
 
+    #endregion
 
+    #region Pause Countdown
     public IEnumerator CountdownPause()
     {
         im_countdown.enabled = false;
@@ -79,4 +92,5 @@ public class CountdownController : Singleton<CountdownController>
         _countdownPanel.SetActive(false);
     }
 
+    #endregion
 }
