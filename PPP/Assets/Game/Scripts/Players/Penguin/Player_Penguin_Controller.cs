@@ -5,6 +5,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 {
     // Input fields
     private Player_Penguin _playerPenguinActionsAsset;
+    private Animator _animator;
     private InputAction _move;
 
     // Movement fields
@@ -27,6 +28,8 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     private new void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        SetHasPopsicle(true);
         _playerPenguinActionsAsset = new Player_Penguin();
         _move = _playerPenguinActionsAsset.Player.Move;
     }
@@ -53,21 +56,22 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     private void Movement()
     {
         this.transform.position += Vector3.Normalize(new Vector3(_move.ReadValue<Vector2>().x, _move.ReadValue<Vector2>().y)) * _speed * Time.deltaTime;
-        BodyRotate();
+        MovementAnimationControl();
     }
 
     #endregion
 
-    #region Sprites
+    #region Animation
 
-    private void BodyRotate()
+    private void MovementAnimationControl()
     {
-        // Change sprites
+        _animator.SetFloat("Walk_X", _move.ReadValue<Vector2>().x);
+        _animator.SetFloat("Walk_Y", _move.ReadValue<Vector2>().y);
     }
 
-    private void ChangeSpritePopsicle(bool state)
+    private void AnimationPopsicleControl(bool state)
     {
-
+        _animator.SetLayerWeight(1, (state ? 1 : 0));
     }
 
     #endregion
@@ -118,8 +122,8 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 
         if(_health <= 0)
         {
-            // Code for penguin death
             _isDead = true;
+            TimeCountManager.I.SetTimeUp();
         }
     }
 
@@ -131,7 +135,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     {
         _hasPopsicle = state;
         _rb.velocity = Vector2.zero;
-        ChangeSpritePopsicle(state);
+        AnimationPopsicleControl(state);
     }
 
     public void SetPower(Power_SO power)

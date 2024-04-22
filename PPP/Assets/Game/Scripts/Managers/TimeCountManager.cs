@@ -38,7 +38,6 @@ public class TimeCountManager : Singleton<TimeCountManager>
                 }
                 else if (_currentTime <= 0)
                 {
-                    _levelController.TimeUp();
                     //_audioManager.StopSfx2();
                     _timeOver = true;
                 }
@@ -63,10 +62,19 @@ public class TimeCountManager : Singleton<TimeCountManager>
 
     }
 
+    #region Set
+
+    public void SetTimeUp()
+    {
+        _timeOver = true;
+    }
+
     private void SetTimeText()
     {
         int minutes = (int)_currentTime / 60;
         int seconds = (int)_currentTime - minutes * 60;
         t_time.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
+    #endregion
 }

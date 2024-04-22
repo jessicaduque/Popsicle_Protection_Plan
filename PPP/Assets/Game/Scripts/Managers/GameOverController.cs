@@ -11,11 +11,16 @@ public class GameOverController : Singleton<GameOverController>
 
     private GameObject _winnerPanel;
 
-    [SerializeField] private Button b_restart;
-    [SerializeField] private Button b_mainMenu;
+    private Button b_restart;
+    private Button b_mainMenu;
 
     private BlackScreenController _blackScreenController => BlackScreenController.I;
     private LevelController _levelController => LevelController.I;
+
+    private new void Awake()
+    {
+        
+    }
     private void OnEnable()
     {
         _levelController.timeUp += CheckWinner;
@@ -23,18 +28,8 @@ public class GameOverController : Singleton<GameOverController>
     private void OnDisable()
     {
         _levelController.timeUp -= CheckWinner;
-    }
-
-    private IEnumerator WaitForPanelReady()
-    {
-        CanvasGroup panelCG = _winnerPanel.GetComponent<CanvasGroup>();
-        while (panelCG.alpha != 1)
-        {
-            yield return null;
-        }
-
-        b_restart.onClick.AddListener(() => _blackScreenController.FadeOutScene("Main"));
-        b_mainMenu.onClick.AddListener(() => _blackScreenController.FadeOutScene("MainMenu"));
+        b_mainMenu.onClick.RemoveAllListeners();
+        b_restart.onClick.RemoveAllListeners();
     }
 
     private void CheckWinner()
@@ -58,6 +53,32 @@ public class GameOverController : Singleton<GameOverController>
     private void GameOverPanelControl(bool winnerIsPenguin)
     {
         _winnerPanel = (winnerIsPenguin ? _penguinWinnerPanel : _polarBearWinnerPanel);
+        ButtonExtra[] buttons = _winnerPanel.GetComponentsInChildren<ButtonExtra>();
+        for(int i=0; i< buttons.Length; i++)
+        {
+            if(buttons[i].nameTag == "restart")
+            {
+                b_restart = buttons[i].GetComponent<Button>();
+            }
+            else if(buttons[i].nameTag == "menu")
+            {
+                b_mainMenu = buttons[i].GetComponent<Button>();
+            }
+        }
+        StartCoroutine(WaitForPanelReady());
         Helpers.FadeInPanel(_winnerPanel);
+    }
+
+    private IEnumerator WaitForPanelReady()
+    {
+        CanvasGroup panelCG = _winnerPanel.GetComponent<CanvasGroup>();
+        panelCG.alpha = 0;
+        while (panelCG.alpha != 1)
+        {
+            yield return null;
+        }
+
+        b_restart.onClick.AddListener(() => _blackScreenController.FadeOutScene("Main"));
+        b_mainMenu.onClick.AddListener(() => _blackScreenController.FadeOutScene("MainMenu"));
     }
 }

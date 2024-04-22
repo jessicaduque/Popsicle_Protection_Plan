@@ -1,6 +1,5 @@
 using System;
 using Utils.Singleton;
-using UnityEngine;
 
 public class LevelController : Singleton<LevelController>
 {
@@ -9,22 +8,26 @@ public class LevelController : Singleton<LevelController>
 
     private LevelState _levelState = LevelState.POWER_DESIGNATION;
 
-    protected new void Awake()
+    private new void Awake()
     {
-
     }
 
+    #region Begin Level
     public void BeginLevel()
     {
         _levelState = LevelState.BEGIN;
         beginLevel?.Invoke();
     }
+    #endregion
 
+    #region Time Up
     public void TimeUp()
     {
         _levelState = LevelState.END;
         timeUp?.Invoke();
     }
+
+    #endregion
 
     #region Set
     public void SetLevelState(LevelState state)
