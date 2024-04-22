@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a7239d21216c8924fb2ee137916cac85
+guid: e1afe9fe6fb95204780d0472d96e3e7d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,91 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Cards_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1178
-        width: 790
-        height: 1178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5e0b943f2280e5344aab8bc55baf78c5
-      internalID: 4764434
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cards_1
-      rect:
-        serializedVersion: 2
-        x: 790
-        y: 1178
-        width: 790
-        height: 1178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1dc5850d8d4d1c341a03b8999c61541a
-      internalID: 1240167529
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cards_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 790
-        height: 1178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a45b96a3447bbee4183f72d4bdf52c07
-      internalID: -642071208
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cards_3
-      rect:
-        serializedVersion: 2
-        x: 790
-        y: 0
-        width: 790
-        height: 1178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4dc8e0fb8b005b94d9735492f15b0f6a
-      internalID: 1454833154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -203,11 +119,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Cards_0: 4764434
-      Cards_1: 1240167529
-      Cards_2: -642071208
-      Cards_3: 1454833154
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

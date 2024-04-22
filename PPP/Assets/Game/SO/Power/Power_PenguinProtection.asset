@@ -15,7 +15,7 @@ MonoBehaviour:
   power_name: Penguin Protection
   power_brief_description: 
   power_long_description: 
-  power_sprite: {fileID: 0}
+  power_sprite: {fileID: 4764434, guid: a7239d21216c8924fb2ee137916cac85, type: 3}
   power_rechargeTime: 0
   power_useTime: 0
   power_isPenguinPower: 0

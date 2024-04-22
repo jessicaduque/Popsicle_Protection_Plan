@@ -8,7 +8,6 @@ public class BlackScreenController : Singleton<BlackScreenController>
 {
     [SerializeField] private GameObject _blackScreen_Panel;
     [SerializeField] private CanvasGroup _blackScreen_CanvasGroup;
-    private float _blackCameraFadeTime = 0.2f;
     private float _blackFadeTime => Helpers.blackFadeTime;
 
     protected override void Awake()
