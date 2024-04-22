@@ -6,7 +6,6 @@ public class ButtonExtra : MonoBehaviour
 {
     [field: SerializeField] public string nameTag { get; private set; }
     private Button _thisButton;
-    private bool _canClick = true;
     AudioManager _audioManager => AudioManager.I;
 
     private void Awake()
@@ -22,19 +21,15 @@ public class ButtonExtra : MonoBehaviour
 
     private void MakeSound()
     {
-        if (_canClick)
-        {
-            //_audioManager.PlaySfx("ButtonClick");
-            _thisButton.enabled = false;
-            StartCoroutine(Reset());
-            _canClick = false;
-        }
-    }
+        //_audioManager.PlaySfx("ButtonClick");
+        _thisButton.enabled = false;
+        StartCoroutine(Reset());
+    }        
 
     IEnumerator Reset()
     {
         yield return new WaitForSeconds(0.1f);
-        _canClick = true;
+        _thisButton.enabled = true;
     }
 
 }

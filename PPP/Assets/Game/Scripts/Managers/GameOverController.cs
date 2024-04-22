@@ -73,12 +73,15 @@ public class GameOverController : Singleton<GameOverController>
     {
         CanvasGroup panelCG = _winnerPanel.GetComponent<CanvasGroup>();
         panelCG.alpha = 0;
+        b_restart.enabled = false;
+        b_mainMenu.enabled = false;
         while (panelCG.alpha != 1)
         {
             yield return null;
         }
-
         b_restart.onClick.AddListener(() => _blackScreenController.FadeOutScene("Main"));
         b_mainMenu.onClick.AddListener(() => _blackScreenController.FadeOutScene("MainMenu"));
+        b_restart.enabled = true;
+        b_mainMenu.enabled = true;
     }
 }

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4552e4ffdd97ac2409c9db7f353b2ba6, type: 3}
-  m_Name: Power_Snowberus
+  m_Name: Power_PenguinProtection
   m_EditorClassIdentifier: 
-  power_name: Snowberus
+  power_name: Penguin Protection
   power_brief_description: 
   power_long_description: 
-  power_sprite: {fileID: 1832832853, guid: a7239d21216c8924fb2ee137916cac85, type: 3}
-  power_rechargeTime: 8
-  power_useTime: 10
+  power_sprite: {fileID: 0}
+  power_rechargeTime: 0
+  power_useTime: 0
   power_isPenguinPower: 0
-  power_controllerPrefab: {fileID: 7938342612597497319, guid: 0398009849cbc3a4395615ef536108e5, type: 3}
+  power_controllerPrefab: {fileID: 0}
