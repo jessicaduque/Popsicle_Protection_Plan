@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Snowball : MonoBehaviour
@@ -24,7 +22,7 @@ public class Snowball : MonoBehaviour
         _rb.velocity = Vector2.zero;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<IDamageable>() != null)
         {

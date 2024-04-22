@@ -42,24 +42,27 @@ public class InfiniteScroll : MonoBehaviour
         _contentPanelTransform.localPosition = new Vector3(_contentPanelTransform.localPosition.x,
             (0 - (_itemList[0].rect.height + _VLG.spacing) * ItemsToAdd),
             _contentPanelTransform.localPosition.z);
+
+
+        StartCoroutine(ChoosePower());
     }
 
     //private void Update()
     //{
-    //    if (_contentPanelTransform.localPosition.y > 0)
+    //    if (_contentpaneltransform.localposition.y > 0)
     //    {
-    //        Canvas.ForceUpdateCanvases();
-    //        _contentPanelTransform.localPosition -= new Vector3(0, _itemList.Length * (_itemList[0].rect.height + _VLG.spacing), 0);
+    //        canvas.forceupdatecanvases();
+    //        _contentpaneltransform.localposition -= new vector3(0, _itemlist.length * (_itemlist[0].rect.height + _vlg.spacing), 0);
 
-    //        ChangeSprite();
+    //        changesprite();
     //    }
 
-    //    if (_contentPanelTransform.localPosition.y < 0 - (_itemList.Length * (_itemList[0].rect.height + _VLG.spacing)))
+    //    if (_contentpaneltransform.localposition.y < 0 - (_itemlist.length * (_itemlist[0].rect.height + _vlg.spacing)))
     //    {
-    //        Canvas.ForceUpdateCanvases();
-    //        _contentPanelTransform.localPosition += new Vector3(0, _itemList.Length * (_itemList[0].rect.height + _VLG.spacing), 0);
+    //        canvas.forceupdatecanvases();
+    //        _contentpaneltransform.localposition += new vector3(0, _itemlist.length * (_itemlist[0].rect.height + _vlg.spacing), 0);
 
-    //        ChangeSprite();
+    //        changesprite();
     //    }
     //}
 
@@ -67,11 +70,14 @@ public class InfiniteScroll : MonoBehaviour
 
     public IEnumerator ChoosePower()
     {
+        yield return new WaitForSeconds(1);
+
         int chosenPower = Random.Range(0, _characterSOArray.Length);
+        Debug.Log("Power chosen: " + chosenPower);
 
         float time = 0f;
 
-        while(time < 2)
+        while(true/*time < 2*/)
         {
             _contentPanelTransform.localPosition += new Vector3(0, 2, 0);
 
@@ -87,20 +93,20 @@ public class InfiniteScroll : MonoBehaviour
             yield return null;
         }
 
-        while(_currentSprite != chosenPower)
-        {
-            _contentPanelTransform.localPosition += new Vector3(0, 2, 0);
+        //while(_currentSprite != chosenPower)
+        //{
+        //    _contentPanelTransform.localPosition += new Vector3(0, 2, 0);
 
-            if (_contentPanelTransform.localPosition.y < 0 - (_itemList.Length * (_itemList[0].rect.height + _VLG.spacing)))
-            {
-                Canvas.ForceUpdateCanvases();
-                _contentPanelTransform.localPosition += new Vector3(0, _itemList.Length * (_itemList[0].rect.height + _VLG.spacing), 0);
+        //    if (_contentPanelTransform.localPosition.y < 0 - (_itemList.Length * (_itemList[0].rect.height + _VLG.spacing)))
+        //    {
+        //        Canvas.ForceUpdateCanvases();
+        //        _contentPanelTransform.localPosition += new Vector3(0, _itemList.Length * (_itemList[0].rect.height + _VLG.spacing), 0);
 
-                ChangeSprite();
-            }
+        //        ChangeSprite();
+        //    }
 
-            yield return null;
-        }
+        //    yield return null;
+        //}
     }
 
     #endregion

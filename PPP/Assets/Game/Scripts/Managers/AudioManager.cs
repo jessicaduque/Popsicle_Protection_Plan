@@ -43,7 +43,7 @@ public class AudioManager : Singleton<AudioManager>
         SetupMixer(keyMixerEffects, EnabledSFX);
         SetupMixer(keyMixerMusic, EnabledMusicLevel);
 
-        FadeInMusic("Menu");
+        //FadeInMusic("MenuMusic");
     }
 
     private void SetupMixer(string mixer, int enabled)

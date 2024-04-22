@@ -2,13 +2,13 @@ using Utils.Singleton;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class BlackScreenController : Singleton<BlackScreenController>
 {
     [SerializeField] private GameObject _blackScreen_Panel;
     [SerializeField] private CanvasGroup _blackScreen_CanvasGroup;
     private float _blackFadeTime => Helpers.blackFadeTime;
+    private BlackScreenCircleEffectController _blackScreenCircleEffectController => BlackScreenCircleEffectController.I;
 
     protected override void Awake()
     {
@@ -21,7 +21,10 @@ public class BlackScreenController : Singleton<BlackScreenController>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        FadeInSceneStart();
+        if (scene.name != "Main")
+            FadeInSceneStart();
+        else
+            _blackScreenCircleEffectController.CircleScreenOpen();
     }
 
     private void OnDestroy()

@@ -985,7 +985,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6062570748539205714}
-  - component: {fileID: 3427182819969039342}
+  - component: {fileID: 6622324560168962051}
   m_Layer: 0
   m_Name: PowerController_Snowberus
   m_TagString: Untagged
@@ -1012,7 +1012,7 @@ Transform:
   - {fileID: 2381350685103831277}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3427182819969039342
+--- !u!114 &6622324560168962051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7938342612597497319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bdfe481969527941823e643190a83d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d633591e10f7414da6d280aaa90aa96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _snowFallShadows:

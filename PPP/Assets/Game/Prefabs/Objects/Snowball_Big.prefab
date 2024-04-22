@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 387942940113701260}
   - component: {fileID: 8561233750615705880}
   - component: {fileID: 3998527027804251439}
+  - component: {fileID: 1899584888798080512}
+  - component: {fileID: -2793091991656983456}
   m_Layer: 6
   m_Name: Snowball_Big
   m_TagString: Untagged
@@ -130,3 +132,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3182284, y: 0.31510925}
   m_EdgeRadius: 0
+--- !u!95 &1899584888798080512
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636926145465967143}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b208ffa0687b57343895ab205ab1b15a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2793091991656983456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636926145465967143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f606785dd6ca947b8dd8a2e54c3569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0
