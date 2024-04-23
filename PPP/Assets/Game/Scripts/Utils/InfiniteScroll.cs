@@ -9,8 +9,9 @@ public class InfiniteScroll : MonoBehaviour
     [SerializeField] private RectTransform _contentPanelTransform;
     [SerializeField] private VerticalLayoutGroup _VLG;
 
-    [SerializeField] private RectTransform[] _itemList;
+    [SerializeField] private RectTransform[] _originalItemList;
     private Image _changeableSprite;
+    private Image[] _finalItemImageList;
 
     private Power_SO[] _characterSOArray;
     private Sprite[] _characterPowerSprites;
@@ -18,53 +19,37 @@ public class InfiniteScroll : MonoBehaviour
 
     private void Start()
     {
-        _changeableSprite = _itemList[1].GetComponent<Image>();
+        _changeableSprite = _originalItemList[1].GetComponent<Image>();
 
-        int ItemsToAdd = Mathf.CeilToInt(_viewPortTransform.rect.height / (_itemList[0].rect.height + _VLG.spacing));
+        int ItemsToAdd = Mathf.CeilToInt(_viewPortTransform.rect.height / (_originalItemList[0].rect.height + _VLG.spacing));
         
         for(int i = 0; i < ItemsToAdd; i++)
         {
-            RectTransform RT = Instantiate(_itemList[i % _itemList.Length], _contentPanelTransform);
+            RectTransform RT = Instantiate(_originalItemList[i % _originalItemList.Length], _contentPanelTransform);
             RT.SetAsLastSibling();
         }
 
         for(int i = 0; i < ItemsToAdd; i++)
         {
-            int num = _itemList.Length - i - 1;
+            int num = _originalItemList.Length - i - 1;
             while(num < 0)
             {
-                num += _itemList.Length;
+                num += _originalItemList.Length;
             }
-            RectTransform RT = Instantiate(_itemList[num], _contentPanelTransform);
+            RectTransform RT = Instantiate(_originalItemList[num], _contentPanelTransform);
             RT.SetAsFirstSibling();
         }
 
+        _finalItemImageList = new Image[_originalItemList.Length + ItemsToAdd];
+        _finalItemImageList = _contentPanelTransform.GetComponentsInChildren<Image>();
+
         _contentPanelTransform.localPosition = new Vector3(_contentPanelTransform.localPosition.x,
-            (0 - (_itemList[0].rect.height + _VLG.spacing) * ItemsToAdd),
+            (0 - (_originalItemList[0].rect.height + _VLG.spacing) * ItemsToAdd),
             _contentPanelTransform.localPosition.z);
 
 
         StartCoroutine(ChoosePower());
     }
-
-    //private void Update()
-    //{
-    //    if (_contentpaneltransform.localposition.y > 0)
-    //    {
-    //        canvas.forceupdatecanvases();
-    //        _contentpaneltransform.localposition -= new vector3(0, _itemlist.length * (_itemlist[0].rect.height + _vlg.spacing), 0);
-
-    //        changesprite();
-    //    }
-
-    //    if (_contentpaneltransform.localposition.y < 0 - (_itemlist.length * (_itemlist[0].rect.height + _vlg.spacing)))
-    //    {
-    //        canvas.forceupdatecanvases();
-    //        _contentpaneltransform.localposition += new vector3(0, _itemlist.length * (_itemlist[0].rect.height + _vlg.spacing), 0);
-
-    //        changesprite();
-    //    }
-    //}
 
     #region Automatic Scroll
 
@@ -79,12 +64,13 @@ public class InfiniteScroll : MonoBehaviour
 
         while(true/*time < 2*/)
         {
-            _contentPanelTransform.localPosition += new Vector3(0, 2, 0);
+            _contentPanelTransform.localPosition += new Vector3(0, 4, 0);
 
-            if (_contentPanelTransform.localPosition.y < 0 - (_itemList.Length * (_itemList[0].rect.height + _VLG.spacing)))
+            if (_contentPanelTransform.localPosition.y > 0)
             {
+                Debug.Log(_contentPanelTransform.localPosition.y);
                 Canvas.ForceUpdateCanvases();
-                _contentPanelTransform.localPosition += new Vector3(0, _itemList.Length * (_itemList[0].rect.height + _VLG.spacing), 0);
+                _contentPanelTransform.localPosition -= new Vector3(0, _originalItemList.Length * (_originalItemList[0].rect.height + _VLG.spacing), 0);
 
                 ChangeSprite();
             }
@@ -127,11 +113,11 @@ public class InfiniteScroll : MonoBehaviour
 
     private void DefineInicialSprites()
     {
-        for (int i=0; i < _itemList.Length; i++)
+        for (int i=0; i < _originalItemList.Length; i++)
         {
-            _itemList[0].GetComponent<Image>().sprite = _characterPowerSprites[_currentSprite];
+            _originalItemList[0].GetComponent<Image>().sprite = _characterPowerSprites[_currentSprite];
             _currentSprite++;
-            if(_currentSprite == _itemList.Length)
+            if(_currentSprite == _originalItemList.Length)
             {
                 _currentSprite = 0;
             }
@@ -142,7 +128,7 @@ public class InfiniteScroll : MonoBehaviour
     {
         _changeableSprite.sprite = _characterPowerSprites[_currentSprite];
         _currentSprite++;
-        if (_currentSprite == _itemList.Length)
+        if (_currentSprite == _originalItemList.Length)
         {
             _currentSprite = 0;
         }

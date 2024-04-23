@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 15365860}
   - component: {fileID: 15365862}
   - component: {fileID: 15365861}
+  - component: {fileID: 15365863}
   m_Layer: 5
   m_Name: BlessingsDesignationPanel
   m_TagString: Untagged
@@ -155,6 +156,7 @@ RectTransform:
   m_Children:
   - {fileID: 2067276831}
   - {fileID: 1610928695}
+  - {fileID: 1099504529}
   m_Father: {fileID: 577148770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -200,6 +202,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15365859}
   m_CullTransparentMesh: 1
+--- !u!114 &15365863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15365859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec2bae7e64deee47974e010e535ea94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _penguinPowerInfiniteScroll: {fileID: 2067276835}
+  _polarBearPowerInfiniteScroll: {fileID: 1610928699}
+  _penguinPowersArray:
+  - {fileID: 11400000, guid: 470bcf8b43f300543ae1b818a6eaf859, type: 2}
+  - {fileID: 11400000, guid: 3c716e01b0f58094082345a545f45d39, type: 2}
+  _polarBearPowersArray:
+  - {fileID: 11400000, guid: d12550b9c105e094abae1d90ba172340, type: 2}
+  - {fileID: 11400000, guid: d92b974a1fb3b884c81e4f546779917b, type: 2}
+  _blessingsDesignationPanel: {fileID: 15365859}
 --- !u!1 &58919086
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +674,7 @@ GameObject:
   - component: {fileID: 268386519}
   - component: {fileID: 268386521}
   - component: {fileID: 268386520}
+  - component: {fileID: 268386522}
   m_Layer: 5
   m_Name: CountdownPanel
   m_TagString: Untagged
@@ -716,6 +740,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268386518}
   m_CullTransparentMesh: 1
+--- !u!114 &268386522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268386518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde92c4c42d48864d8a011d18a5f401c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  im_countdown: {fileID: 1285104910}
+  _countdownSprites:
+  - {fileID: 1534334624, guid: 85c17497450081642953345fb0a006c7, type: 3}
+  - {fileID: 790693566, guid: 85c17497450081642953345fb0a006c7, type: 3}
+  - {fileID: 169336219, guid: 85c17497450081642953345fb0a006c7, type: 3}
+  _countdownPanel: {fileID: 268386518}
+  _HUDPanel: {fileID: 302840901}
 --- !u!1 &281281494
 GameObject:
   m_ObjectHideFlags: 0
@@ -29810,7 +29853,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1009784077}
   - component: {fileID: 1009784078}
-  - component: {fileID: 1009784079}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -29845,27 +29887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcd99884dbdffe4891a1cfdf674efe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1009784079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009784076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ec2bae7e64deee47974e010e535ea94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _penguinPowerInfiniteScroll: {fileID: 2067276835}
-  _polarBearPowerInfiniteScroll: {fileID: 1610928699}
-  _penguinPowersArray:
-  - {fileID: 11400000, guid: 470bcf8b43f300543ae1b818a6eaf859, type: 2}
-  - {fileID: 11400000, guid: 3c716e01b0f58094082345a545f45d39, type: 2}
-  _polarBearPowersArray:
-  - {fileID: 11400000, guid: d12550b9c105e094abae1d90ba172340, type: 2}
-  - {fileID: 11400000, guid: d92b974a1fb3b884c81e4f546779917b, type: 2}
-  _blessingsDesignationPanel: {fileID: 15365859}
 --- !u!1 &1073761080
 GameObject:
   m_ObjectHideFlags: 0
@@ -29944,6 +29965,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 702612693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+--- !u!1 &1099504528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1099504529}
+  - component: {fileID: 1099504531}
+  - component: {fileID: 1099504530}
+  m_Layer: 5
+  m_Name: BlockInteractionPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1099504529
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099504528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 15365860}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1099504530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099504528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: dd0e860ffb67b0c4bad9264994c14e62, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1099504531
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099504528}
+  m_CullTransparentMesh: 1
 --- !u!1 &1203387637
 GameObject:
   m_ObjectHideFlags: 0
@@ -30087,6 +30183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1206190411}
+  - component: {fileID: 1206190412}
   m_Layer: 5
   m_Name: GameOverPanels
   m_TagString: Untagged
@@ -30115,6 +30212,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1206190412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206190410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34248326a453db1419d063ae0b4d23ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _penguinWinnerPanel: {fileID: 2005273309}
+  _polarBearWinnerPanel: {fileID: 1276023348}
 --- !u!1 &1231648383
 GameObject:
   m_ObjectHideFlags: 0
@@ -30614,7 +30725,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1406248591}
   - component: {fileID: 1406248592}
-  - component: {fileID: 1406248593}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -30646,30 +30756,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1406248590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dde92c4c42d48864d8a011d18a5f401c, type: 3}
+  m_Script: {fileID: 11500000, guid: c0b7e8839046c404cbdab50dda58633d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  im_countdown: {fileID: 1285104910}
-  _countdownSprites:
-  - {fileID: 1534334624, guid: 85c17497450081642953345fb0a006c7, type: 3}
-  - {fileID: 790693566, guid: 85c17497450081642953345fb0a006c7, type: 3}
-  - {fileID: 169336219, guid: 85c17497450081642953345fb0a006c7, type: 3}
-  _countdownPanel: {fileID: 268386518}
-  _HUDPanel: {fileID: 302840901}
---- !u!114 &1406248593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406248590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34248326a453db1419d063ae0b4d23ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _penguinWinnerPanel: {fileID: 2005273309}
-  _polarBearWinnerPanel: {fileID: 1276023348}
 --- !u!1001 &1414402673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30829,7 +30918,7 @@ MonoBehaviour:
   _viewPortTransform: {fileID: 2027466029}
   _contentPanelTransform: {fileID: 526117984}
   _VLG: {fileID: 526117985}
-  _itemList:
+  _originalItemList:
   - {fileID: 1994069424}
   - {fileID: 1812492188}
 --- !u!1 &1707644057
@@ -32127,7 +32216,7 @@ MonoBehaviour:
   _viewPortTransform: {fileID: 58919087}
   _contentPanelTransform: {fileID: 1919361902}
   _VLG: {fileID: 1919361903}
-  _itemList:
+  _originalItemList:
   - {fileID: 221010366}
   - {fileID: 798751779}
 --- !u!1001 &1997507512982629556
