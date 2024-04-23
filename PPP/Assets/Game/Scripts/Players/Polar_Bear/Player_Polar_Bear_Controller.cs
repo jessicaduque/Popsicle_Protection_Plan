@@ -7,6 +7,7 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
 {
     // Input fields
     private Player_Polar_Bear _playerPolarBearActionsAsset;
+    private Animator _animator;
     private InputAction _move;
 
     // Movement fields
@@ -31,8 +32,8 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
 
     private new void Awake()
     {
+        _animator = GetComponent<Animator>();
         _playerPolarBearActionsAsset = new Player_Polar_Bear();
-
         _move = _playerPolarBearActionsAsset.Player.Move;
     }
 
@@ -58,6 +59,7 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
     private void Movement()
     {
         float speedX = _move.ReadValue<Vector2>().x;
+        MovementAnimationControl(speedX);
         this.transform.position += new Vector3(speedX, 0) * _speed * Time.deltaTime;
         BodyRotate(speedX);
     }
@@ -66,8 +68,22 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
     {
         if (speedX > 0f)
             this.transform.localScale = new Vector3(1, 1, 1);
-        else
+        else if(speedX < 0f)
             this.transform.localScale = new Vector3(-1, 1, 1);
+    }
+
+    #endregion
+
+    #region Animation
+
+    private void MovementAnimationControl(float speedX)
+    {
+        _animator.SetBool("Walking", (speedX == 0 ? false : true));
+    }
+
+    private void AnimationTrigger(string trigger)
+    {
+        _animator.SetTrigger(trigger);
     }
 
     #endregion
@@ -129,9 +145,14 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
             return;
         }
 
-        _poolManager.GetObject(_attackPoolItem.tagPool, _attackPoint.position, Quaternion.identity);
+        AnimationTrigger("Attack");
         StartCoroutine(AttackCoolDown());
         _canAttack = false;
+    }
+
+    public void SpawnSnowball()
+    {
+        _poolManager.GetObject(_attackPoolItem.tagPool, _attackPoint.position, Quaternion.identity);
     }
 
     private IEnumerator AttackCoolDown()

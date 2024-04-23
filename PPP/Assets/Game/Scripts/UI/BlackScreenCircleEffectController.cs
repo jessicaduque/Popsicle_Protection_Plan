@@ -24,7 +24,7 @@ public class BlackScreenCircleEffectController : Singleton<BlackScreenCircleEffe
     {
         _circleRT.sizeDelta = Vector2.zero;
         _circle.SetActive(true);
-        _circleRT.DOSizeDelta(_endScale, _circleEffectTime).SetEase(Ease.InOutBounce);
+        _circleRT.DOSizeDelta(_endScale, _circleEffectTime).SetEase(Ease.InOutBounce).OnComplete(() => _circle.SetActive(false));
     }
 
     public void CircleScreenClose()
