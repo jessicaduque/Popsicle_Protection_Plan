@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4860485605408520392}
   - component: {fileID: 1806758272552204890}
   - component: {fileID: 6491947259806344272}
-  - component: {fileID: 2298983245792686744}
   - component: {fileID: 4914293493914672727}
+  - component: {fileID: 2298983245792686744}
   m_Layer: 7
   m_Name: Player_Penguin
   m_TagString: Player
@@ -160,22 +160,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &2298983245792686744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3856431074328503684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbfffb7359af810488e9f8f800514114, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 7
-  _popsicle: {fileID: 0}
-  _powerSO: {fileID: 0}
-  _powerScript: {fileID: 0}
 --- !u!95 &4914293493914672727
 Animator:
   serializedVersion: 5
@@ -197,3 +181,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2298983245792686744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856431074328503684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfffb7359af810488e9f8f800514114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 7
+  _popsicle: {fileID: 0}
+  _powerSO: {fileID: 0}
+  _powerScript: {fileID: 0}

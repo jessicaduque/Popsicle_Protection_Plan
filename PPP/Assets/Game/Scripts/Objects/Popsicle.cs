@@ -8,6 +8,7 @@ public class Popsicle : MonoBehaviour
     private GameObject _player;
     [SerializeField] private BoxCollider2D _collider;
     [SerializeField] private float _torqueForce;
+    [SerializeField] private float _impulseForce = 4;
     private Player_Penguin_Controller _playerPenguinController => Player_Penguin_Controller.I;
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class Popsicle : MonoBehaviour
         transform.position = _player.transform.position;
         transform.rotation = Quaternion.Euler(Vector3.zero);
         _rb.gravityScale = 1;
-        _rb.AddForce(new Vector2(_playerPenguinController.GetVelocityX() * 2, 2), ForceMode2D.Impulse);
+        _rb.AddForce(new Vector2(_playerPenguinController.GetVelocityX() * _impulseForce, 2), ForceMode2D.Impulse);
         _rb.AddTorque(_torqueForce, ForceMode2D.Impulse);
         StartCoroutine(StopMovement());
     }

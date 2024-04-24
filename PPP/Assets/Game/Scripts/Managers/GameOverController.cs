@@ -79,8 +79,8 @@ public class GameOverController : Singleton<GameOverController>
         {
             yield return null;
         }
-        b_restart.onClick.AddListener(() => _blackScreenController.FadeOutScene("Main"));
-        b_mainMenu.onClick.AddListener(() => _blackScreenController.FadeOutScene("MainMenu"));
+        b_restart.onClick.AddListener(() => BlackScreenCircleEffectController.I.CircleScreenClose("Main"));
+        b_mainMenu.onClick.AddListener(() => BlackScreenCircleEffectController.I.CircleScreenClose("MainMenu"));
         b_restart.enabled = true;
         b_mainMenu.enabled = true;
     }

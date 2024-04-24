@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Utils.Singleton;
@@ -15,6 +16,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     // Health
     public bool _isDead { get; private set; }
     private int _health = 1;
+    public event Action HealthAffectedEvent;
 
     // Popsicle
     public bool _hasPopsicle { get; private set; } = true;
@@ -110,6 +112,9 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
         {
             return;
         }
+
+        if(value > 0)
+            HealthAffectedEvent?.Invoke();
 
         if (_hasPopsicle)
         {
