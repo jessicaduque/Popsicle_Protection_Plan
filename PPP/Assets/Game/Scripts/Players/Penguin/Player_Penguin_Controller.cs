@@ -113,7 +113,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
             return;
         }
 
-        if(value > 0)
+        if(value < 0)
             HealthAffectedEvent?.Invoke();
 
         if (_hasPopsicle)

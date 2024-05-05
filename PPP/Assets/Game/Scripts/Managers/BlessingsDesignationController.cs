@@ -15,7 +15,7 @@ public class BlessingsDesignationController : MonoBehaviour
 
     private void Start()
     {
-        _penguinPowerInfiniteScroll.DefinePowers(_penguinPowersArray);
-        _polarBearPowerInfiniteScroll.DefinePowers(_polarBearPowersArray);
+        _penguinPowerInfiniteScroll.DefinePowersSO(_penguinPowersArray);
+        _polarBearPowerInfiniteScroll.DefinePowersSO(_polarBearPowersArray);
     }
 }

@@ -11,16 +11,11 @@ public class CountdownController : Singleton<CountdownController>
     [SerializeField] private GameObject _countdownPanel;
     [SerializeField] private GameObject _HUDPanel;
 
-    //private AudioManager _audioManager => AudioManager.I;
+    private AudioManager _audioManager => AudioManager.I;
 
     protected new void Awake()
     {
         
-    }
-
-    private void Start()
-    {
-        StartCoroutine(CountdownToStart());
     }
 
     #region Start Countdown

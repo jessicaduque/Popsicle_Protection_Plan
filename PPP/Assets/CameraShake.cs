@@ -8,18 +8,22 @@ public class CameraShake : MonoBehaviour
 
     private void OnEnable()
     {
-        Player_Penguin_Controller.I.HealthAffectedEvent += () => StartCoroutine(DoCameraShake());
+        Player_Penguin_Controller.I.HealthAffectedEvent += DoCamerShake;
     }
 
     private void OnDisable()
     {
-        Player_Penguin_Controller.I.HealthAffectedEvent -= () => StartCoroutine(DoCameraShake());
+        Player_Penguin_Controller.I.HealthAffectedEvent -= DoCamerShake;
     }
 
-    IEnumerator DoCameraShake()
+    private void DoCamerShake()
     {
         StopAllCoroutines();
+        StartCoroutine(Shake());
+    }
 
+    IEnumerator Shake()
+    {
         Vector3 startPosition = transform.position;
         float elapsedTime = 0f;
 
@@ -27,7 +31,9 @@ public class CameraShake : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float strength = _curve.Evaluate(elapsedTime / _duration);
-            transform.position = startPosition + Random.insideUnitSphere * strength;
+            Vector3 Shake = startPosition + Random.insideUnitSphere * strength;
+            Shake = new Vector3(Shake.x, Shake.y, startPosition.z);
+            transform.position = Shake;
             yield return null;
         }
 

@@ -24,7 +24,10 @@ public class BlackScreenController : Singleton<BlackScreenController>
         if (scene.name != "Main")
             FadeInSceneStart();
         else
+        {
+            _blackScreen_Panel.SetActive(false);
             _blackScreenCircleEffectController.CircleScreenOpen();
+        }
     }
 
     private void OnDestroy()
@@ -59,7 +62,9 @@ public class BlackScreenController : Singleton<BlackScreenController>
     public void FadeOutScene(string nextScene)
     {
         _blackScreen_Panel.SetActive(true);
-        _blackScreen_CanvasGroup.DOFade(1, _blackFadeTime).OnComplete(() => SceneManager.LoadScene(nextScene)).SetUpdate(true);
+        _blackScreen_CanvasGroup.DOFade(1, _blackFadeTime).OnComplete(() => {
+            SceneManager.LoadScene(nextScene);
+            }).SetUpdate(true);
     }
 
     public void RestartGame()
