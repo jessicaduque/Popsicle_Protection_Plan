@@ -18,6 +18,11 @@ public class CountdownController : Singleton<CountdownController>
         
     }
 
+    private void Start()
+    {
+        StartCoroutine(CountdownToStart());
+    }
+
     #region Start Countdown
     public void StartCountdown()
     {
