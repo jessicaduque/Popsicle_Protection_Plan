@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class InfiniteScroll : MonoBehaviour
 {
@@ -58,8 +59,6 @@ public class InfiniteScroll : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        _finalItemImageList[0].sprite = _characterPowerSprites[_lastRandomPower];
-
         float time = 0f;
 
         while(time < 0.8f)
@@ -92,56 +91,42 @@ public class InfiniteScroll : MonoBehaviour
             yield return null;
         }
 
-        while(_contentPanelTransform.localPosition.y <= 0)
+        Canvas.ForceUpdateCanvases();
+
+        float timeFinal = 0;
+
+        Debug.Log("escolhido: " + _characterSOArray[chosenPower].power_name);
+
+        if (chosenPower != _currentSprite)
         {
-            _contentPanelTransform.localPosition += new Vector3(0, 800 * Time.deltaTime, 0);
-            yield return null;
+            Debug.Log("entrou");
+            while (_contentPanelTransform.localPosition.y <= 0)
+            {
+                _contentPanelTransform.localPosition += new Vector3(0, (800 - timeFinal * 10) * Time.deltaTime, 0);
+                timeFinal += Time.deltaTime;
+                yield return null;
+            }
+
+            _finalItemImageList[0].sprite = _finalItemImageList[2].sprite;
+            _finalItemImageList[1].sprite = _characterPowerSprites[chosenPower];
+            _contentPanelTransform.localPosition -= new Vector3(0, _originalItemList.Length * (_originalItemList[0].rect.height + _VLG.spacing), 0);
         }
 
-        Canvas.ForceUpdateCanvases();
-        //_contentPanelTransform.localPosition -= new Vector3(0, _originalItemList.Length * (_originalItemList[0].rect.height + _VLG.spacing), 0);
-
-        FinalSprites(chosenPower);
-
-
-        //while(_currentSprite != chosenPower)
-        //{
-        //    _contentPanelTransform.localPosition += new Vector3(0, 2, 0);
-
-        //    if (_contentPanelTransform.localPosition.y < 0 - (_itemList.Length * (_itemList[0].rect.height + _VLG.spacing)))
-        //    {
-        //        Canvas.ForceUpdateCanvases();
-        //        _contentPanelTransform.localPosition += new Vector3(0, _itemList.Length * (_itemList[0].rect.height + _VLG.spacing), 0);
-
-        //        ChangeSprite();
-        //    }
-
-        //    yield return null;
-        //}
+        //DOTween.To(() => _contentPanelTransform.localPosition.y, x => _contentPanelTransform.localPosition = new Vector3(0, x, 0), 0, 2 - timeFinal).OnComplete(() => );
     }
 
     #endregion
 
     #region Power Sprite Change Control
 
-    public int RandomizePower()
-    {
-        int power = Random.Range(0, _characterSOArray.Length);
-        while(power == _lastRandomPower)
-        {
-            power = Random.Range(0, _characterSOArray.Length);
-        }
-        _lastRandomPower = power;
-        return power;
-    }
-
     private void Init_DefineSprites()
     {
-        for (int i = 0; i < 2 - 1; i++)
+        _finalItemImageList[0].sprite = _characterPowerSprites[_lastRandomPower];
+
+        for (int i = 1; i < _finalItemImageList.Length; i++)
         {
             int power = RandomizePower();
             _finalItemImageList[i].sprite = _characterPowerSprites[power];
-            _finalItemImageList[i + 1].sprite = _characterPowerSprites[power];
         }
     }
 
@@ -152,21 +137,6 @@ public class InfiniteScroll : MonoBehaviour
         _finalItemImageList[0].sprite = _finalItemImageList[2].sprite;
         _finalItemImageList[1].sprite = _characterPowerSprites[RandomizePower()];
         _finalItemImageList[2].sprite = _characterPowerSprites[newFirstSprite];
-    }
-
-    private void FinalSprites(int chosenPower)
-    {
-        chosenPower = RandomizePower();
-        Debug.Log("Escolhido: " + _characterSOArray[chosenPower].power_name);
-
-        if(chosenPower == _currentSprite)
-        {
-            Debug.Log("entered");
-            return;
-        }
-
-        _finalItemImageList[0].sprite = _finalItemImageList[2].sprite;
-        _finalItemImageList[1].sprite = _characterPowerSprites[chosenPower];
     }
 
     public void DefinePowersSO
@@ -181,4 +151,15 @@ public class InfiniteScroll : MonoBehaviour
     }
 
     #endregion
+
+    public int RandomizePower()
+    {
+        int power = Random.Range(0, _characterSOArray.Length);
+        while (power == _lastRandomPower)
+        {
+            power = Random.Range(0, _characterSOArray.Length);
+        }
+        _lastRandomPower = power;
+        return power;
+    }
 }
