@@ -9,8 +9,6 @@ public class CountdownController : Singleton<CountdownController>
     [SerializeField] private Image im_countdown;
     [SerializeField] private Sprite[] _countdownSprites;
     [SerializeField] private GameObject _countdownPanel;
-    [SerializeField] private GameObject _HUDPanel;
-
     private AudioManager _audioManager => AudioManager.I;
 
     protected new void Awake()
@@ -51,10 +49,6 @@ public class CountdownController : Singleton<CountdownController>
         //_audioManager.PlaySfx("GOCountdown");
 
         LevelController.I.BeginLevel();
-
-        _HUDPanel.SetActive(true);
-        _countdownPanel.SetActive(false);
-
     }
 
     #endregion
@@ -86,10 +80,7 @@ public class CountdownController : Singleton<CountdownController>
 
         Time.timeScale = 1;
 
-        LevelController.I.SetLevelState(LevelState.BEGIN);
-
-        _HUDPanel.SetActive(true);
-        _countdownPanel.SetActive(false);
+        LevelController.I.BeginLevel();
     }
 
     #endregion

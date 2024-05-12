@@ -21,13 +21,13 @@ public class GameOverController : Singleton<GameOverController>
     {
         
     }
-    private void OnEnable()
+    private void Start()
     {
-        _levelController.timeUp += CheckWinner;
+        CheckWinner();
     }
+
     private void OnDisable()
     {
-        _levelController.timeUp -= CheckWinner;
         b_mainMenu.onClick.RemoveAllListeners();
         b_restart.onClick.RemoveAllListeners();
     }

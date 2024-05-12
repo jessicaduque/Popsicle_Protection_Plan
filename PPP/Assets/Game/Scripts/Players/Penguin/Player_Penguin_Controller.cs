@@ -38,14 +38,14 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 
     private void OnEnable()
     {
-        _levelController.beginLevel += EnableInputs;
-        _levelController.timeUp += DisableInputs;
+        _levelController.beginLevelEvent += EnableInputs;
+        _levelController.timeUpEvent += DisableInputs;
     }
 
     private void OnDisable()
     {
-        _levelController.beginLevel -= EnableInputs;
-        _levelController.timeUp -= DisableInputs;
+        _levelController.beginLevelEvent -= EnableInputs;
+        _levelController.timeUpEvent -= DisableInputs;
     }
 
     private void FixedUpdate()

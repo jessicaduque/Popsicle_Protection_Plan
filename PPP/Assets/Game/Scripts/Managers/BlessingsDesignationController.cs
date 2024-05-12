@@ -70,6 +70,8 @@ public class BlessingsDesignationController : MonoBehaviour
         yield return new WaitForSeconds(animationTime - 1);
 
         yield return new WaitForSeconds(2);
+
+        LevelController.I.BeginCountdown();
     }
 
     #region Get

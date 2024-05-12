@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 15365860}
   - component: {fileID: 15365862}
   - component: {fileID: 15365861}
+  - component: {fileID: 15365864}
   - component: {fileID: 15365863}
   m_Layer: 5
   m_Name: BlessingsDesignationPanel
@@ -228,6 +229,18 @@ MonoBehaviour:
   _polarBearSprite: {fileID: 949931300}
   _penguinBlessingTextBackground: {fileID: 658815418}
   _polarBearBlessingTextBackground: {fileID: 163578166}
+--- !u!225 &15365864
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15365859}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &163578166
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +462,7 @@ GameObject:
   - component: {fileID: 268386519}
   - component: {fileID: 268386521}
   - component: {fileID: 268386520}
+  - component: {fileID: 268386523}
   - component: {fileID: 268386522}
   m_Layer: 5
   m_Name: CountdownPanel
@@ -533,7 +547,18 @@ MonoBehaviour:
   - {fileID: 790693566, guid: 85c17497450081642953345fb0a006c7, type: 3}
   - {fileID: 169336219, guid: 85c17497450081642953345fb0a006c7, type: 3}
   _countdownPanel: {fileID: 268386518}
-  _HUDPanel: {fileID: 302840901}
+--- !u!225 &268386523
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268386518}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &281281494
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,10 +716,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2932604546157331116, guid: 7b0d60dd30886d344b7423cdb96c3384, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2932604546157331116, guid: 7b0d60dd30886d344b7423cdb96c3384, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
@@ -704,7 +725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5667502551237025512, guid: 7b0d60dd30886d344b7423cdb96c3384, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30534,7 +30555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1206190411
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31442,7 +31463,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b7e8839046c404cbdab50dda58633d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pausePanel: {fileID: 0}
+  _blessingPanel: {fileID: 15365859}
+  _countdownPanel: {fileID: 268386518}
+  _hudPanel: {fileID: 302840901}
+  _gameoverPanels: {fileID: 1206190410}
+  _pausePanel: {fileID: 1598142141}
 --- !u!1001 &1414402673
 PrefabInstance:
   m_ObjectHideFlags: 0

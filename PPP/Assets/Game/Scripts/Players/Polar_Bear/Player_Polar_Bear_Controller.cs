@@ -39,14 +39,14 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
 
     private void OnEnable()
     {
-        _levelController.beginLevel += EnableInputs;
-        _levelController.timeUp += DisableInputs;
+        _levelController.beginLevelEvent += EnableInputs;
+        _levelController.timeUpEvent += DisableInputs;
     }
 
     private void OnDisable()
     {
-        _levelController.beginLevel -= EnableInputs;
-        _levelController.timeUp -= DisableInputs;
+        _levelController.beginLevelEvent -= EnableInputs;
+        _levelController.timeUpEvent -= DisableInputs;
     }
 
     private void FixedUpdate()

@@ -3,20 +3,38 @@ using Utils.Singleton;
 
 public class LevelController : Singleton<LevelController>
 {
-    public event Action beginLevel;
-    public event Action timeUp;
+    public event Action blessingsEvent;
+    public event Action countdownEvent;
+    public event Action beginLevelEvent;
+    public event Action timeUpEvent;
 
-    private LevelState _levelState = LevelState.POWER_DESIGNATION;
+    private LevelState _levelState;
 
     private new void Awake()
     {
     }
 
+    #region Blessings Designation 
+    public void BeginBlessings()
+    {
+        _levelState = LevelState.POWER_DESIGNATION;
+        blessingsEvent?.Invoke();
+    }
+    #endregion
+
+    #region Countdown 
+    public void BeginCountdown()
+    {
+        _levelState = LevelState.COUNTDOWN;
+        countdownEvent?.Invoke();
+    }
+    #endregion
+
     #region Begin Level
     public void BeginLevel()
     {
         _levelState = LevelState.BEGIN;
-        beginLevel?.Invoke();
+        beginLevelEvent?.Invoke();
     }
     #endregion
 
@@ -24,17 +42,17 @@ public class LevelController : Singleton<LevelController>
     public void TimeUp()
     {
         _levelState = LevelState.END;
-        timeUp?.Invoke();
+        timeUpEvent?.Invoke();
     }
 
     #endregion
 
-    #region Set
-    public void SetLevelState(LevelState state)
-    {
-        _levelState = state;
-    }
-    #endregion
+    //#region Set
+    //public void SetLevelState(LevelState state)
+    //{
+    //    _levelState = state;
+    //}
+    //#endregion
 
     #region Get
     public LevelState GetLevelState()
