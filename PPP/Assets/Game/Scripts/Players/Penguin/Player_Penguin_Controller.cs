@@ -39,13 +39,17 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     private void OnEnable()
     {
         _levelController.beginLevelEvent += EnableInputs;
+
         _levelController.timeUpEvent += DisableInputs;
+        _levelController.pauseEvent += DisableInputs;
     }
 
     private void OnDisable()
     {
         _levelController.beginLevelEvent -= EnableInputs;
+
         _levelController.timeUpEvent -= DisableInputs;
+        _levelController.pauseEvent -= DisableInputs;
     }
 
     private void FixedUpdate()
@@ -100,6 +104,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 
     private void DoPowerControl(InputAction.CallbackContext obj)
     {
+        Debug.Log("Penguin uses power");
     }
 
     #endregion

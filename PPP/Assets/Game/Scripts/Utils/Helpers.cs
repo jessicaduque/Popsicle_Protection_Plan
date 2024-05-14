@@ -18,6 +18,10 @@ public static class Helpers
     {
         panel.GetComponent<CanvasGroup>().DOFade(0, panelFadeTime).OnComplete(() => panel.SetActive(false)).SetUpdate(true);
     }
+    public static void FadeOutPanel(GameObject panel, float time)
+    {
+        panel.GetComponent<CanvasGroup>().DOFade(0, time).OnComplete(() => panel.SetActive(false)).SetUpdate(true);
+    }
 
     public static void FadeCrossPanel(GameObject offPanel, GameObject onPanel)
     {

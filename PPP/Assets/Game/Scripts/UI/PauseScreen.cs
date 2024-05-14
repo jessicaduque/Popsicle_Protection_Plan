@@ -5,17 +5,13 @@ using UnityEngine.UI;
 
 public class PauseScreen : MonoBehaviour
 {
-    private Image im_pauseImage;
-    private float _animationTime = 1;
+    private float _animationTime = 0.5f;
 
+    [SerializeField] private Image im_pauseImage;
     [SerializeField] Sprite[] _possiblePauseImageSprites;
     [SerializeField] Button[] _buttons;
 
     BlackScreenController _blackScreenController => BlackScreenController.I;
-    private void Awake()
-    {
-        im_pauseImage = GetComponent<Image>();
-    }
 
     private void Start()
     {
@@ -32,13 +28,13 @@ public class PauseScreen : MonoBehaviour
         RandomizePauseImage();
         ResetButtons();
 
-        yield return new WaitForSeconds(Helpers.panelFadeTime);
+        yield return new WaitForSecondsRealtime(Helpers.panelFadeTime / 2);
 
         ButtonsAnimation();
         
-        yield return new WaitForSeconds(_animationTime);
+        yield return new WaitForSecondsRealtime(_animationTime);
 
-        EnableButtons();
+        ButtonsActivationControl(true);
     }
 
    
@@ -51,10 +47,14 @@ public class PauseScreen : MonoBehaviour
             switch (name)
             {
                 case "resume":
-                    _buttons[i].onClick.AddListener(() => _blackScreenController.FadePanel(this.gameObject, false));
+                    _buttons[i].onClick.AddListener(() => { 
+                        Helpers.FadeOutPanel(this.gameObject);
+                        ButtonsActivationControl(false);
+                        LevelController.I.BeginCountdown();
+                    });
                     break;
                 case "restart":
-                    _buttons[i].onClick.AddListener(() =>_blackScreenController.FadeOutScene("Main"));
+                    _buttons[i].onClick.AddListener(() => _blackScreenController.FadeOutScene("Main"));
                     break;
                 case "exit":
                     _buttons[i].onClick.AddListener(() => _blackScreenController.FadeOutScene("MainMenu"));
@@ -65,14 +65,15 @@ public class PauseScreen : MonoBehaviour
 
     private void ResetButtons()
     {
-        for(int i = 0; i < _buttons.Length; i++)
+        ButtonsActivationControl(false);
+
+        for (int i = 0; i < _buttons.Length; i++)
         {
-            _buttons[i].enabled = false;
             _buttons[i].gameObject.transform.localScale = Vector3.zero;
         }
     }
 
-    private void EnableButtons()
+    private void ButtonsActivationControl(bool state)
     {
         for (int i = 0; i < _buttons.Length; i++)
         {
@@ -84,7 +85,7 @@ public class PauseScreen : MonoBehaviour
     {
         for (int i = 0; i < _buttons.Length; i++)
         {
-            _buttons[i].transform.DOScale(1, _animationTime).SetEase(Ease.InBounce);
+            _buttons[i].GetComponent<RectTransform>().DOScale(1, _animationTime).SetEase(Ease.OutBounce).SetDelay(i * 0.1f).SetUpdate(true);
         }
     }
 

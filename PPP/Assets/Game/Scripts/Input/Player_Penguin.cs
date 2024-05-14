@@ -50,7 +50,7 @@ public partial class @Player_Penguin: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""46decccd-537f-48dd-a8de-8c38ffef2541"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",

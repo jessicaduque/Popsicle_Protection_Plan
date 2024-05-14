@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using Utils.Singleton;
 
 public class LevelController : Singleton<LevelController>
@@ -7,6 +8,7 @@ public class LevelController : Singleton<LevelController>
     public event Action countdownEvent;
     public event Action beginLevelEvent;
     public event Action timeUpEvent;
+    public event Action pauseEvent;
 
     private LevelState _levelState;
 
@@ -33,8 +35,18 @@ public class LevelController : Singleton<LevelController>
     #region Begin Level
     public void BeginLevel()
     {
+        Time.timeScale = 1;
         _levelState = LevelState.BEGIN;
         beginLevelEvent?.Invoke();
+    }
+    #endregion
+
+    #region Pause
+    public void Pause()
+    {
+        _levelState = LevelState.PAUSE;
+        Time.timeScale = 0;
+        pauseEvent?.Invoke();
     }
     #endregion
 
@@ -46,13 +58,6 @@ public class LevelController : Singleton<LevelController>
     }
 
     #endregion
-
-    //#region Set
-    //public void SetLevelState(LevelState state)
-    //{
-    //    _levelState = state;
-    //}
-    //#endregion
 
     #region Get
     public LevelState GetLevelState()

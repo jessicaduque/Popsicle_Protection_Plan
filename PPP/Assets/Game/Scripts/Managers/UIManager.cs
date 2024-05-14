@@ -25,8 +25,11 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         _levelController.blessingsEvent += () => _blessingPanel.SetActive(true);
-        _levelController.countdownEvent += () => Helpers.FadeCrossPanel(_blessingPanel, _countdownPanel);
-        _levelController.beginLevelEvent += () => { _countdownPanel.SetActive(false); _hudPanel.SetActive(true); };
+        _levelController.countdownEvent += () => { 
+            Helpers.FadeOutPanel(_blessingPanel);
+            Helpers.FadeInPanel(_countdownPanel);
+        };
+        _levelController.beginLevelEvent += () => Helpers.FadeCrossPanel(_countdownPanel, _hudPanel); 
         _levelController.timeUpEvent += () => _gameoverPanels.SetActive(true);
 
         _levelController.BeginBlessings();
@@ -35,13 +38,17 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         _levelController.beginLevelEvent += EnableInputs;
+
         _levelController.timeUpEvent += DisableInputs;
+        _levelController.pauseEvent += DisableInputs;
     }
 
     private void OnDisable()
     {
         _levelController.beginLevelEvent -= EnableInputs;
+
         _levelController.timeUpEvent -= DisableInputs;
+        _levelController.pauseEvent -= DisableInputs;
     }
 
     #region Input
@@ -66,7 +73,7 @@ public class UIManager : MonoBehaviour
 
     private void DoPauseControl(InputAction.CallbackContext obj)
     {
-        Time.timeScale = 0;
+        _levelController.Pause();
 
         Helpers.FadeInPanel(_pausePanel);
     }

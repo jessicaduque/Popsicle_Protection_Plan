@@ -40,13 +40,17 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
     private void OnEnable()
     {
         _levelController.beginLevelEvent += EnableInputs;
+
         _levelController.timeUpEvent += DisableInputs;
+        _levelController.pauseEvent += DisableInputs;
     }
 
     private void OnDisable()
     {
         _levelController.beginLevelEvent -= EnableInputs;
+
         _levelController.timeUpEvent -= DisableInputs;
+        _levelController.pauseEvent -= DisableInputs;
     }
 
     private void FixedUpdate()
@@ -112,6 +116,7 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
 
     private void DoPowerControl(InputAction.CallbackContext obj)
     {
+        Debug.Log("Polar Bear uses power");
     }
 
     #endregion

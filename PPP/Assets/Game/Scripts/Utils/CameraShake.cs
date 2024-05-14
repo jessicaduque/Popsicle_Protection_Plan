@@ -29,7 +29,7 @@ public class CameraShake : MonoBehaviour
 
         while(elapsedTime < _duration)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledTime;
             float strength = _curve.Evaluate(elapsedTime / _duration);
             Vector3 Shake = startPosition + Random.insideUnitSphere * strength;
             Shake = new Vector3(Shake.x, Shake.y, startPosition.z);

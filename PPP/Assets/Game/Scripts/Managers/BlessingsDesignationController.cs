@@ -49,16 +49,17 @@ public class BlessingsDesignationController : MonoBehaviour
     private IEnumerator RandomizePowersFinalAnimation()
     {
         int animationTime = 4;
+        float initialTime = 1;
 
         Sequence penguinSeq = DOTween.Sequence();
         penguinSeq.Append(_penguinSprite.transform.DOMoveX(-3000, 2).SetEase(Ease.InOutFlash));
-        penguinSeq.Insert(2, _penguinBlessingTextBackground.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InBounce));
+        penguinSeq.Insert(initialTime, _penguinBlessingTextBackground.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InFlash));
 
         Sequence polarSeq = DOTween.Sequence();
         polarSeq.Append(_polarBearSprite.transform.DOMoveX(3000, 2).SetEase(Ease.InOutFlash));
-        polarSeq.Insert(1, _polarBearBlessingTextBackground.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InBounce));
+        polarSeq.Insert(initialTime, _polarBearBlessingTextBackground.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InFlash));
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(initialTime);
         _penguinSprite.SetActive(false);
         _penguinBlessingTextBackground.GetComponentInChildren<TextMeshProUGUI>().text = _penguinBlessingsArray[_penguinChosenBlessing].power_brief_description;
         _penguinBlessingTextBackground.SetActive(true);
