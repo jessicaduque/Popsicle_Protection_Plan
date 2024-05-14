@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1230d1f3a0e00c44a874d882146af102
+guid: 606490a7657198040b5df897d5790b53
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Penguin's Victory_1
+      name: PolarBearVictory_0
       rect:
         serializedVersion: 2
-        x: 333
-        y: 92
-        width: 1901
-        height: 1301
+        x: 91
+        y: 358
+        width: 1992
+        height: 1371
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 559dc882f3977524690a8f068d0d6c17
-      internalID: -1402033064
+      spriteID: deea13b656f41464a93d1702bd4d033e
+      internalID: 1660255989
       vertices: []
       indices: 
       edges: []
@@ -141,8 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Penguin's Victory_0: 154595325
-      Penguin's Victory_1: -1402033064
+      PolarBearVictory_0: 1660255989
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

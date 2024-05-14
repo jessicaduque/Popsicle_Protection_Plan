@@ -5928,6 +5928,7 @@ GameObject:
   - component: {fileID: 512849292}
   - component: {fileID: 512849294}
   - component: {fileID: 512849293}
+  - component: {fileID: 512849295}
   m_Layer: 5
   m_Name: PolarBearBlessingImageBackground
   m_TagString: Untagged
@@ -5993,6 +5994,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512849291}
   m_CullTransparentMesh: 1
+--- !u!114 &512849295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512849291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186961e6a39f84e4cacc48f55654b221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  im_thisFill: {fileID: 671552303}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -28652,6 +28666,7 @@ GameObject:
   - component: {fileID: 808928355}
   - component: {fileID: 808928357}
   - component: {fileID: 808928356}
+  - component: {fileID: 808928358}
   m_Layer: 5
   m_Name: PenguinBlessingImageBackground
   m_TagString: Untagged
@@ -28717,6 +28732,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808928354}
   m_CullTransparentMesh: 1
+--- !u!114 &808928358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808928354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186961e6a39f84e4cacc48f55654b221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  im_thisFill: {fileID: 41653223}
 --- !u!1 &859899574
 GameObject:
   m_ObjectHideFlags: 0

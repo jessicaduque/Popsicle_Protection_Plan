@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 
@@ -22,6 +20,8 @@ public class BlessingsDesignationController : MonoBehaviour
     private int _penguinChosenBlessing;
     private int _polarBearChosenBlessing;
 
+    LevelController _levelController => LevelController.I;
+
     private void Start()
     {
         _penguinBlessingTextBackground.transform.localScale = Vector3.zero;
@@ -34,6 +34,8 @@ public class BlessingsDesignationController : MonoBehaviour
 
         _penguinChosenBlessing = Random.Range(0, _penguinBlessingsArray.Length);
         _polarBearChosenBlessing = Random.Range(0, _polarBearBlessingsArray.Length);
+
+        _levelController.SetLevelBlessings(_penguinBlessingsArray[_penguinChosenBlessing], _polarBearBlessingsArray[_polarBearChosenBlessing]);
 
         StartCoroutine(RandomizePowersStart());
     }

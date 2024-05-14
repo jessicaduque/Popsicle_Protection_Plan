@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1230d1f3a0e00c44a874d882146af102
+guid: 42c0b1fbff53bab4a9dcfff1efde8c77
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Penguin's Victory_1
+      name: Penguin Running Particle 2 16x16_0
       rect:
         serializedVersion: 2
-        x: 333
-        y: 92
-        width: 1901
-        height: 1301
+        x: 4
+        y: 10
+        width: 2
+        height: 1
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 559dc882f3977524690a8f068d0d6c17
-      internalID: -1402033064
+      spriteID: 6a2a3ea6a570fac46932db86528d4cdc
+      internalID: -1596090193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Penguin Running Particle 2 16x16_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 6
+        width: 2
+        height: 3
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6666b5e79e8b83d4b92ee87ede5b9da3
+      internalID: -2008938515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Penguin Running Particle 2 16x16_2
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 8
+        width: 2
+        height: 1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ef01aa4b5808b48854f00d3ab4a06a
+      internalID: 1270213263
       vertices: []
       indices: 
       edges: []
@@ -141,8 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Penguin's Victory_0: 154595325
-      Penguin's Victory_1: -1402033064
+      Penguin Running Particle 2 16x16_0: -1596090193
+      Penguin Running Particle 2 16x16_1: -2008938515
+      Penguin Running Particle 2 16x16_2: 1270213263
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

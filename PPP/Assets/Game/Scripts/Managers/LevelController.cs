@@ -11,6 +11,8 @@ public class LevelController : Singleton<LevelController>
     public event Action pauseEvent;
 
     private LevelState _levelState;
+    public Power_SO _levelPenguinBlessing { get; private set; }
+    public Power_SO _levelPolarBearBlessing { get; private set; }
 
     private new void Awake()
     {
@@ -64,5 +66,16 @@ public class LevelController : Singleton<LevelController>
     {
         return _levelState;
     }
+
+    #endregion
+
+    #region Set
+
+    public void SetLevelBlessings(Power_SO penguinBlessing, Power_SO polarBearBlessing)
+    {
+        _levelPenguinBlessing = penguinBlessing;
+        _levelPolarBearBlessing = polarBearBlessing;
+    }
+
     #endregion
 }
