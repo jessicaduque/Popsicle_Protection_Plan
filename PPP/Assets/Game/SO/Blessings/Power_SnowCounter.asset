@@ -19,4 +19,4 @@ MonoBehaviour:
   power_rechargeTime: 10
   power_useTime: 1.2
   power_isPenguinPower: 1
-  power_controllerPrefab: {fileID: 0}
+  power_controllerPrefab: {fileID: 1270515982496038493, guid: bb8efd5501ed59646bea978347885d3e, type: 3}

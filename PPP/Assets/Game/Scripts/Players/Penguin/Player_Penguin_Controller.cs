@@ -36,6 +36,11 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
         _move = _playerPenguinActionsAsset.Player.Move;
     }
 
+    private void Start()
+    {
+        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPenguinBlessing);
+    }
+
     private void OnEnable()
     {
         _levelController.beginLevelEvent += EnableInputs;
@@ -104,7 +109,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 
     private void DoPowerControl(InputAction.CallbackContext obj)
     {
-        Debug.Log("Penguin uses power");
+        _powerScript.UsePower();
     }
 
     #endregion
@@ -148,7 +153,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
         AnimationPopsicleControl(state);
     }
 
-    public void SetPower(Power_SO power)
+    private void SetPower(Power_SO power)
     {
         _powerSO = power;
         GameObject powerController = Instantiate(power.power_controllerPrefab, Vector2.zero, Quaternion.identity);

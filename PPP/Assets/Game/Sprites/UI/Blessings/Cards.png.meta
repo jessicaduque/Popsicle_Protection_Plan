@@ -118,7 +118,7 @@ TextureImporter:
         width: 728
         height: 1162
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,7 +139,7 @@ TextureImporter:
         width: 727
         height: 1162
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,7 +160,7 @@ TextureImporter:
         width: 728
         height: 1162
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,27 +168,6 @@ TextureImporter:
       bones: []
       spriteID: f90ec85b9311d9a4ab85acebfe2a9beb
       internalID: -50924073
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cards_3
-      rect:
-        serializedVersion: 2
-        x: 820
-        y: 53
-        width: 727
-        height: 1162
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: edf709143eabffb4392b9d8ed3e6f8a3
-      internalID: 1989085431
       vertices: []
       indices: 
       edges: []

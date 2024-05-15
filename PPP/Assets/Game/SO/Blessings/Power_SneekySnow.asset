@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4552e4ffdd97ac2409c9db7f353b2ba6, type: 3}
   m_Name: Power_SneekySnow
   m_EditorClassIdentifier: 
-  power_name: Sneeky Snow
+  power_name: Sneaky Snow
   power_brief_description: Make your attacks more of a secret!
   power_long_description: 
-  power_sprite: {fileID: 1989085431, guid: a7239d21216c8924fb2ee137916cac85, type: 3}
+  power_sprite: {fileID: -191907831, guid: 9d70b8a836ddd774aa22c7256a91296d, type: 3}
   power_rechargeTime: 12
   power_useTime: 5
   power_isPenguinPower: 0
-  power_controllerPrefab: {fileID: 0}
+  power_controllerPrefab: {fileID: 1226510144478926967, guid: 9971e3de7533ced4cbbab3ef7a49e693, type: 3}

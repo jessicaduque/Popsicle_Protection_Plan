@@ -36,7 +36,10 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
         _playerPolarBearActionsAsset = new Player_Polar_Bear();
         _move = _playerPolarBearActionsAsset.Player.Move;
     }
-
+    private void Start()
+    {
+        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPolarBearBlessing);
+    }
     private void OnEnable()
     {
         _levelController.beginLevelEvent += EnableInputs;
@@ -116,7 +119,7 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
 
     private void DoPowerControl(InputAction.CallbackContext obj)
     {
-        Debug.Log("Polar Bear uses power");
+        _powerScript.UsePower();
     }
 
     #endregion
@@ -169,9 +172,8 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
 
     #endregion
 
-
     #region Set
-    public void SetPower(Power_SO power)
+    private void SetPower(Power_SO power)
     {
         _powerSO = power;
         GameObject powerController = Instantiate(power.power_controllerPrefab, Vector2.zero, Quaternion.identity);

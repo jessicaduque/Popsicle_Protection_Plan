@@ -9,6 +9,7 @@ public class LevelController : Singleton<LevelController>
     public event Action beginLevelEvent;
     public event Action timeUpEvent;
     public event Action pauseEvent;
+    public event Action blessingsRandomizedEvent;
 
     private LevelState _levelState;
     public Power_SO _levelPenguinBlessing { get; private set; }
@@ -75,6 +76,8 @@ public class LevelController : Singleton<LevelController>
     {
         _levelPenguinBlessing = penguinBlessing;
         _levelPolarBearBlessing = polarBearBlessing;
+
+        blessingsRandomizedEvent?.Invoke();
     }
 
     #endregion

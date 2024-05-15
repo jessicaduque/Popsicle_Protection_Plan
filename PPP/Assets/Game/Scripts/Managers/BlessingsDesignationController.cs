@@ -54,12 +54,12 @@ public class BlessingsDesignationController : MonoBehaviour
         float initialTime = 1;
 
         Sequence penguinSeq = DOTween.Sequence();
-        penguinSeq.Append(_penguinSprite.transform.DOMoveX(-3000, 2).SetEase(Ease.InOutFlash));
-        penguinSeq.Insert(initialTime, _penguinBlessingTextBackground.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InFlash));
+        penguinSeq.Append(_penguinSprite.transform.DOMoveX(_penguinSprite.transform.position.x - 1000, 2).SetEase(Ease.InOutCirc));
+        penguinSeq.Insert(initialTime, _penguinBlessingTextBackground.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InOutCirc));
 
         Sequence polarSeq = DOTween.Sequence();
-        polarSeq.Append(_polarBearSprite.transform.DOMoveX(3000, 2).SetEase(Ease.InOutFlash));
-        polarSeq.Insert(initialTime, _polarBearBlessingTextBackground.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InFlash));
+        polarSeq.Append(_polarBearSprite.transform.DOMoveX(_polarBearSprite.transform.position.x + 1000, 2).SetEase(Ease.InOutCirc));
+        polarSeq.Insert(initialTime, _polarBearBlessingTextBackground.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InOutCirc));
 
         yield return new WaitForSeconds(initialTime);
         _penguinSprite.SetActive(false);
