@@ -47,9 +47,9 @@ public class PauseScreen : MonoBehaviour
             switch (name)
             {
                 case "resume":
-                    _buttons[i].onClick.AddListener(() => { 
-                        Helpers.FadeOutPanel(this.gameObject);
+                    _buttons[i].onClick.AddListener(() => {
                         ButtonsActivationControl(false);
+                        Helpers.FadeOutPanel(this.gameObject);
                         LevelController.I.BeginCountdown();
                     });
                     break;
@@ -77,7 +77,7 @@ public class PauseScreen : MonoBehaviour
     {
         for (int i = 0; i < _buttons.Length; i++)
         {
-            _buttons[i].enabled = true;
+            _buttons[i].enabled = state;
         }
     }
 

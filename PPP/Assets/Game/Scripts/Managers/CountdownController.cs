@@ -24,11 +24,6 @@ public class CountdownController : Singleton<CountdownController>
     }
 
     #region Start Countdown
-    public void StartCountdown()
-    {
-        StartCoroutine(CountdownToStart());
-    }
-
     public IEnumerator CountdownToStart()
     {
         im_countdown.enabled = false;

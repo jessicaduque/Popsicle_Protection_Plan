@@ -25,10 +25,10 @@ public static class Helpers
 
     public static void FadeCrossPanel(GameObject offPanel, GameObject onPanel)
     {
-        offPanel.GetComponent<CanvasGroup>().DOFade(0, panelFadeTime).OnComplete(() => {
+        offPanel.GetComponent<CanvasGroup>().DOFade(0, panelFadeTime).SetUpdate(true).OnComplete(() => {
             offPanel.SetActive(false);
             onPanel.SetActive(true);
-            onPanel.GetComponent<CanvasGroup>().DOFade(1, panelFadeTime);
+            onPanel.GetComponent<CanvasGroup>().DOFade(1, panelFadeTime).SetUpdate(true);
         });
     }
 }
