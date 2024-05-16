@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233076195592976388}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,5 +47,17 @@ MonoBehaviour:
   masterMixer: {fileID: 24100000, guid: f0ba13bfb07a01145b762699e9795433, type: 2}
   musicGroup: {fileID: 1124759619446725679, guid: f0ba13bfb07a01145b762699e9795433, type: 2}
   sfxGroup: {fileID: -3065478319022928601, guid: f0ba13bfb07a01145b762699e9795433, type: 2}
-  musics: []
-  sfx: []
+  musics:
+  - {fileID: 11400000, guid: c5ade3cb58129d644a19a6884790b88b, type: 2}
+  sfx:
+  - {fileID: 11400000, guid: ddd40a327c5404c4395f57ee9660d79c, type: 2}
+  - {fileID: 11400000, guid: fed8cb7b2d7933043a6aea2bd6fcc1c7, type: 2}
+  - {fileID: 11400000, guid: a6ff06e4a2a1e954dae6408f753b54d8, type: 2}
+  - {fileID: 11400000, guid: bb42726f7e8004f4caff3fccd4656a26, type: 2}
+  - {fileID: 11400000, guid: a6a12f75af939e34faab8add12089bbc, type: 2}
+  - {fileID: 11400000, guid: a41788070baf22b449a8d98d66fe9094, type: 2}
+  - {fileID: 11400000, guid: 50283f23799392b4cb89057f9d391a26, type: 2}
+  - {fileID: 11400000, guid: bea11f068177310488fae9fe379b59c9, type: 2}
+  - {fileID: 11400000, guid: 1371278532c87f84288bd768bda0fec8, type: 2}
+  - {fileID: 11400000, guid: c352b30a35141e74db05995fcb6733d5, type: 2}
+  - {fileID: 11400000, guid: 8101669aac0134340920cbed9b1f49ae, type: 2}

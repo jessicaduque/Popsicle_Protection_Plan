@@ -52,7 +52,7 @@ public class PoolManager : Singleton<PoolManager>
     {
         if (!_poolDictionary.ContainsKey(tagPool))
         {
-            Debug.LogWarning("Pool with tag " + tagPool + " doens't exist.");
+            Debug.LogWarning("Pool with tag " + tagPool + " doesn't exist.");
             return null;
         }
 

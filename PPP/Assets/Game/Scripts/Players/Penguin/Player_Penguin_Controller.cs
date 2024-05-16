@@ -38,7 +38,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 
     private void Start()
     {
-        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPenguinBlessing);
+        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPenguinBlessingSO, _levelController._levelPenguinBlessing);
     }
 
     private void OnEnable()
@@ -153,17 +153,19 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
         AnimationPopsicleControl(state);
     }
 
-    private void SetPower(Power_SO power)
+    private void SetPower(Power_SO powerSO, Power power)
     {
-        _powerSO = power;
-        GameObject powerController = Instantiate(power.power_controllerPrefab, Vector2.zero, Quaternion.identity);
-        _powerScript = powerController.GetComponent<Power>();
+        _powerSO = powerSO;
+        _powerScript = power;
     }
 
     #endregion
 
     #region Get
-
+    public Power GetPower()
+    {
+        return _powerScript;
+    }
     public int GetVelocityX()
     {
         return (_move.ReadValue<Vector2>().x > 0 ? -1 : 1);

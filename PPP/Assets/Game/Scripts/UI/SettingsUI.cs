@@ -71,7 +71,7 @@ public class SettingsUI : MonoBehaviour
     {
         if (!_musicCooldown)
         {
-            //_audioManager.PlaySfx("ButtonClick");
+            _audioManager.PlaySfx("buttonclick");
             _musicOn = !_musicOn;
             ChangeSpritesMusic();
             _audioManager.ChangeStateMixerMusic(_musicOn);
@@ -87,7 +87,7 @@ public class SettingsUI : MonoBehaviour
             _effectsOn = !_effectsOn;
             ChangeSpritesEffects();
             _audioManager.ChangeStateMixerSFX(_effectsOn);
-            //if (_effectsOn) { _audioManager.PlaySfx("ButtonClick"); }
+            if (_effectsOn) { _audioManager.PlaySfx("buttonclick"); }
             StartCoroutine(EffectsCooldown());
             b_effects.enabled = false;
             _effectsCooldown = true;

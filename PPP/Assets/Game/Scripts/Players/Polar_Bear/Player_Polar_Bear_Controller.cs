@@ -38,7 +38,7 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
     }
     private void Start()
     {
-        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPolarBearBlessing);
+        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPolarBearBlessingSO, _levelController._levelPolarBearBlessing);
     }
     private void OnEnable()
     {
@@ -173,11 +173,18 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
     #endregion
 
     #region Set
-    private void SetPower(Power_SO power)
+    private void SetPower(Power_SO powerSO, Power power)
     {
-        _powerSO = power;
-        GameObject powerController = Instantiate(power.power_controllerPrefab, Vector2.zero, Quaternion.identity);
-        _powerScript = powerController.GetComponent<Power>();
+        _powerSO = powerSO;
+        _powerScript = power;
+    }
+
+    #endregion
+
+    #region Get
+    public Power GetPower()
+    {
+        return _powerScript;
     }
 
     #endregion

@@ -12,8 +12,10 @@ public class LevelController : Singleton<LevelController>
     public event Action blessingsRandomizedEvent;
 
     private LevelState _levelState;
-    public Power_SO _levelPenguinBlessing { get; private set; }
-    public Power_SO _levelPolarBearBlessing { get; private set; }
+    public Power_SO _levelPenguinBlessingSO { get; private set; }
+    public Power_SO _levelPolarBearBlessingSO { get; private set; }
+    public Power _levelPenguinBlessing { get; private set; }
+    public Power _levelPolarBearBlessing { get; private set; }
 
     private new void Awake()
     {
@@ -74,8 +76,11 @@ public class LevelController : Singleton<LevelController>
 
     public void SetLevelBlessings(Power_SO penguinBlessing, Power_SO polarBearBlessing)
     {
-        _levelPenguinBlessing = penguinBlessing;
-        _levelPolarBearBlessing = polarBearBlessing;
+        _levelPenguinBlessingSO = penguinBlessing;
+        _levelPolarBearBlessingSO = polarBearBlessing;
+
+        _levelPenguinBlessing = Instantiate(_levelPenguinBlessingSO.power_controllerPrefab, Vector2.zero, Quaternion.identity).GetComponent<Power>();
+        _levelPolarBearBlessing = Instantiate(_levelPolarBearBlessingSO.power_controllerPrefab, Vector2.zero, Quaternion.identity).GetComponent<Power>();
 
         blessingsRandomizedEvent?.Invoke();
     }

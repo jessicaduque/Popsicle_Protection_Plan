@@ -1,11 +1,11 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Power : MonoBehaviour
 {
-    private bool _canUsePower;
+    private bool _canUsePower = true;
     
-    public UnityAction powerActivatedEvent;
+    public event Action powerActivatedEvent;
 
     public virtual void UsePower()
     {

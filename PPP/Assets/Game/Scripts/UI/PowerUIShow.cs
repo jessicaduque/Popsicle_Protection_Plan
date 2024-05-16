@@ -6,14 +6,13 @@ using DG.Tweening;
 
 public class PowerUIShow : MonoBehaviour
 {
-    private Image im_thisBackground;
+    
     [SerializeField] private Image im_thisFill;
     [SerializeField] bool _isPenguinBlessing;
 
     private float _rechargeTime;
-
-    public event Action rechargeDoneEvent;
-
+    private Image im_thisBackground;
+    private Power _thisPower;
     LevelController _levelController => LevelController.I;
     private void Awake()
     {
@@ -25,12 +24,23 @@ public class PowerUIShow : MonoBehaviour
         im_thisFill.fillAmount = 1;
         if (_isPenguinBlessing)
         {
-            _levelController.blessingsRandomizedEvent += () => SetPowerDetails(_levelController._levelPenguinBlessing.power_rechargeTime, _levelController._levelPenguinBlessing.power_sprite);
+            _levelController.blessingsRandomizedEvent += () =>
+            {
+                _thisPower = Player_Penguin_Controller.I.GetPower();
+                _thisPower.powerActivatedEvent += () => PowerUsed();
+                SetPowerDetails(_levelController._levelPenguinBlessingSO.power_rechargeTime, _levelController._levelPenguinBlessingSO.power_sprite);
+            };
         }
         else
         {
-            _levelController.blessingsRandomizedEvent += () => SetPowerDetails(_levelController._levelPolarBearBlessing.power_rechargeTime, _levelController._levelPolarBearBlessing.power_sprite);
+            _levelController.blessingsRandomizedEvent += () =>
+            {
+                _thisPower = Player_Polar_Bear_Controller.I.GetPower();
+                _thisPower.powerActivatedEvent += () => PowerUsed();
+                _levelController.blessingsRandomizedEvent += () => SetPowerDetails(_levelController._levelPolarBearBlessingSO.power_rechargeTime, _levelController._levelPolarBearBlessingSO.power_sprite);
+            };
         }
+
     }
 
     private void OnDisable()
@@ -41,7 +51,6 @@ public class PowerUIShow : MonoBehaviour
     public void PowerUsed()
     {
         im_thisFill.fillAmount = 0;
-
         StartCoroutine(RechargeBlessing());
     }
 
@@ -49,7 +58,7 @@ public class PowerUIShow : MonoBehaviour
     {
         DOTween.To(() => im_thisFill.fillAmount, x => im_thisFill.fillAmount = x, 1, _rechargeTime);
         yield return new WaitForSeconds(_rechargeTime);
-        rechargeDoneEvent?.Invoke();
+        _thisPower.SetCanUsePower(true);
     }
 
     #region Set

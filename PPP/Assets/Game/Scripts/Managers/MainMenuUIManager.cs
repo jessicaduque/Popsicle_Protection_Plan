@@ -1,34 +1,48 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils.Singleton;
 
-public class MainMenuUIManager : MonoBehaviour
+public class MainMenuUIManager : Singleton<MainMenuUIManager>
 {
-    [Header("Menu")]
-    [SerializeField] GameObject _menuPanel;
-
     [Header("Play")]
     [SerializeField] Button b_play;
 
     [Header("Settings")]
     [SerializeField] Button b_settings;
     [SerializeField] GameObject _settingsPanel;
+    [SerializeField] Button b_leaveSettings;
 
     [Header("Credits")]
     [SerializeField] Button b_credits;
     [SerializeField] GameObject _creditsPanel;
+    [SerializeField] Button b_leaveCredits;
 
     [Header("How To Play")]
     [SerializeField] Button b_howToPlay;
     [SerializeField] GameObject _howToPlayPanel;
+    [SerializeField] Button b_leaveHowToPlay;
+
+    [Header("Cutscene")]
+    [SerializeField] Button b_skip;
+    [SerializeField] Button b_watchCutscene;
+    [SerializeField] GameObject _cutscenePanel;
+    [SerializeField] Animator _cutsceneAnimator;
 
     BlackScreenController _blackScreenController => BlackScreenController.I;
+
+    private new void Awake()
+    {
+
+    }
 
     private void OnEnable()
     {
         StartCoroutine(WaitForPanelReady());
         ButtonThresholdSetup();
         AddButtonListeners();
+
+        StartCoroutine(StartCutscene());
     }
 
     private void OnDisable()
@@ -47,27 +61,44 @@ public class MainMenuUIManager : MonoBehaviour
 
     #region Settings
 
-    private void SettingsButtonControl()
+    private void SettingsButtonControl(bool state)
     {
-        _blackScreenController.FadePanel(_settingsPanel, true);
+        _blackScreenController.FadePanel(_settingsPanel, state);
     }
 
     #endregion
 
     #region Credits
 
-    private void CreditsButtonControl()
+    private void CreditsButtonControl(bool state)
     {
-        _blackScreenController.FadePanel(_creditsPanel, true);
+        _blackScreenController.FadePanel(_creditsPanel, state);
     }
 
     #endregion
 
     #region How To Play
 
-    private void HowToPlayButtonControl()
+    private void HowToPlayButtonControl(bool state)
     {
-        _blackScreenController.FadePanel(_howToPlayPanel, true);
+        _blackScreenController.FadePanel(_howToPlayPanel, state);
+    }
+
+    #endregion
+
+    #region Cutscene
+
+    private IEnumerator StartCutscene()
+    {
+        yield return new WaitForSeconds(1);
+        _cutsceneAnimator.SetTrigger("Start");
+    }
+
+
+    public void EndCutscene()
+    {
+        _cutsceneAnimator.StopPlayback();
+        _blackScreenController.FadePanel(_cutscenePanel, false);
     }
 
     #endregion
@@ -80,14 +111,24 @@ public class MainMenuUIManager : MonoBehaviour
         b_settings.GetComponent<Image>().alphaHitTestMinimumThreshold = threshold;
         b_credits.GetComponent<Image>().alphaHitTestMinimumThreshold = threshold;
         b_howToPlay.GetComponent<Image>().alphaHitTestMinimumThreshold = threshold;
+        b_leaveSettings.GetComponent<Image>().alphaHitTestMinimumThreshold = threshold;
+        b_leaveCredits.GetComponent<Image>().alphaHitTestMinimumThreshold = threshold;
+        b_leaveHowToPlay.GetComponent<Image>().alphaHitTestMinimumThreshold = threshold;
+        b_skip.GetComponent<Image>().alphaHitTestMinimumThreshold = threshold;
+        b_watchCutscene.GetComponent<Image>().alphaHitTestMinimumThreshold = threshold;
     }
 
     private void AddButtonListeners()
     {
         b_play.onClick.AddListener(PlayButtonControl);
-        b_settings.onClick.AddListener(SettingsButtonControl);
-        b_credits.onClick.AddListener(CreditsButtonControl);
-        b_howToPlay.onClick.AddListener(HowToPlayButtonControl);
+        b_settings.onClick.AddListener(() => SettingsButtonControl(true));
+        b_credits.onClick.AddListener(() => CreditsButtonControl(true));
+        b_howToPlay.onClick.AddListener(() => HowToPlayButtonControl(true));
+        b_leaveSettings.onClick.AddListener(() => SettingsButtonControl(false));
+        b_leaveCredits.onClick.AddListener(() => CreditsButtonControl(false));
+        b_leaveHowToPlay.onClick.AddListener(() => HowToPlayButtonControl(false));
+        b_skip.onClick.AddListener(() => EndCutscene()); 
+        b_watchCutscene.onClick.AddListener(() => { _blackScreenController.FadePanel(_cutscenePanel, true); StartCoroutine(StartCutscene()); });
     }
 
     private IEnumerator WaitForPanelReady()

@@ -6285,7 +6285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -28967,7 +28967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -29005,7 +29005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   im_thisFill: {fileID: 41653223}
-  _isPenguinBlessing: 0
+  _isPenguinBlessing: 1
 --- !u!1 &835755024
 GameObject:
   m_ObjectHideFlags: 0
@@ -31791,6 +31791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pools:
   - {fileID: 11400000, guid: 44815593175f5b943a9821ed4e1e20d7, type: 2}
+  - {fileID: 11400000, guid: f9370dc6b76c73048ac6f1af5276e43a, type: 2}
 --- !u!1 &1275343741
 GameObject:
   m_ObjectHideFlags: 0

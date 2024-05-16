@@ -1042,7 +1042,7 @@ MonoBehaviour:
     - {fileID: 6307353785493288027}
     - {fileID: 1710337782192095670}
   _bigSnowballPoolItem: {fileID: 11400000, guid: f9370dc6b76c73048ac6f1af5276e43a, type: 2}
-  _bigSnowballSpawnY: 10.7
+  _bigSnowballSpawnY: 15
 --- !u!1 &8846230111115186533
 GameObject:
   m_ObjectHideFlags: 0
