@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundName: menumusic
   clip: {fileID: 8300000, guid: 46686c3c5cf4ff24194691f78ef1a6ab, type: 3}
-  loop: 0
+  loop: 1
   volume: 1
   pitch: 1

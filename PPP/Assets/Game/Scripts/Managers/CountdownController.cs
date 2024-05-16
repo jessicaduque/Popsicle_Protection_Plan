@@ -35,17 +35,16 @@ public class CountdownController : Singleton<CountdownController>
 
         int i = 0;
 
+        _audioManager.PlaySfx("123countdown");
         while (i < 3)
         {
             im_countdown.sprite = _countdownSprites[i];
             rt_imCountDown.DOScale(1, 0.5f).OnComplete(() => rt_imCountDown.DOScale(0, 0.5f).SetEase(Ease.InFlash).SetUpdate(true)).SetEase(Ease.OutFlash).SetUpdate(true);
-            //_audioManager.PlaySfx("123Countdown");
+            
             yield return new WaitForSecondsRealtime(1f);
 
             i++;
         }
-
-        //_audioManager.PlaySfx("GOCountdown");
 
         LevelController.I.BeginLevel();
     }

@@ -16,7 +16,7 @@ public class TimeCountManager : Singleton<TimeCountManager>
     private bool _startTimer;
 
     private LevelController _levelController => LevelController.I;
-    //private AudioManager _audioManager => AudioManager.I;
+    private AudioManager _audioManager => AudioManager.I;
 
     protected new void Awake() 
     {
@@ -33,17 +33,17 @@ public class TimeCountManager : Singleton<TimeCountManager>
 
                 if (!_timerEnding && _currentTime <= 6)
                 {
-                    //_audioManager.PlaySfx2("ClockTick");
+                    _audioManager.PlaySfx2("ClockTick");
                     _timerEnding = true;
                 }
                 else if (_currentTime <= 0)
                 {
-                    //_audioManager.StopSfx2();
+                    _audioManager.StopSfx2();
                     _timeOver = true;
                 }
                 else if (_currentTime > 6)
                 {
-                    //_audioManager.StopSfx2();
+                    _audioManager.StopSfx2();
                     _timerEnding = false;
                 }
 
@@ -56,7 +56,7 @@ public class TimeCountManager : Singleton<TimeCountManager>
         }
         else
         {
-            //_audioManager.StopSfx2();
+            _audioManager.StopSfx2();
             _timerEnding = false;
         }
 

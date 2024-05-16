@@ -19,6 +19,7 @@ public class AudioManager : Singleton<AudioManager>
     private AudioSource _musicSource1;
     private AudioSource _musicSource2;
     private AudioSource _sfxSource;
+    private AudioSource _sfxSource2;
 
     public int EnabledSFX { get; private set; }
     public int EnabledMusicLevel { get; private set; }
@@ -75,6 +76,11 @@ public class AudioManager : Singleton<AudioManager>
         _sfxSource.outputAudioMixerGroup = sfxGroup;
         _sfxSource.playOnAwake = false;
 
+        _sfxSource2 = new GameObject("SFX_2").AddComponent<AudioSource>();
+        _sfxSource2.gameObject.transform.SetParent(transform);
+        _sfxSource2.outputAudioMixerGroup = sfxGroup;
+        _sfxSource2.playOnAwake = false;
+
     }
 
     public void PlaySfx(string soundName)
@@ -83,7 +89,7 @@ public class AudioManager : Singleton<AudioManager>
 
         if (sound != null)
         {
-            SetupSfxAudioSource(sound.volume, sound.pitch);
+            SetupSfxAudioSource(_sfxSource, sound.volume, sound.pitch);
             _sfxSource.PlayOneShot(sound.clip);
         }
     }
@@ -93,17 +99,33 @@ public class AudioManager : Singleton<AudioManager>
         _sfxSource.Stop();
     }
 
+    public void PlaySfx2(string soundName)
+    {
+        Sound sound = GetSFX(soundName);
+
+        if (sound != null)
+        {
+            SetupSfxAudioSource(_sfxSource2, sound.volume, sound.pitch);
+            _sfxSource2.PlayOneShot(sound.clip);
+        }
+    }
+
+    public void StopSfx2()
+    {
+        _sfxSource2.Stop();
+    }
+
     public void PlaySfx(AudioClip audioClip, float volume = 1f, float pitch = 1f)
     {
-        SetupSfxAudioSource(volume, pitch);
+        SetupSfxAudioSource(_sfxSource, volume, pitch);
         _sfxSource.PlayOneShot(audioClip);
     }
 
-    private void SetupSfxAudioSource(float volume, float pitch)
+    private void SetupSfxAudioSource(AudioSource currentSx, float volume, float pitch)
     {
-        _sfxSource.loop = false;
-        _sfxSource.volume = volume;
-        _sfxSource.pitch = pitch;
+        currentSx.loop = false;
+        currentSx.volume = volume;
+        currentSx.pitch = pitch;
     }
 
     public void PlayMusic(string soundName)

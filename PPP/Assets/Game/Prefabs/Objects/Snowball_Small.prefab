@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 662620595210584168}
   - component: {fileID: 2207501751145807617}
   - component: {fileID: 8394075810524082551}
-  - component: {fileID: -3735724298504866401}
+  - component: {fileID: 7217021788076150018}
   m_Layer: 6
   m_Name: Snowball_Small
   m_TagString: Untagged
@@ -160,7 +160,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-3735724298504866401
+--- !u!114 &7217021788076150018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6079366513323487066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 919fde12af83915499364e377f022244, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c9903f9b9bfce14bbd6bc393b723d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 13

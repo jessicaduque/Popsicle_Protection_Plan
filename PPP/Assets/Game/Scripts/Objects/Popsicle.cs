@@ -10,6 +10,7 @@ public class Popsicle : MonoBehaviour
     [SerializeField] private float _torqueForce;
     [SerializeField] private float _impulseForce = 4;
     private Player_Penguin_Controller _playerPenguinController => Player_Penguin_Controller.I;
+    AudioManager _audioManager => AudioManager.I;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -19,6 +20,7 @@ public class Popsicle : MonoBehaviour
 
     private void OnEnable()
     {
+        _audioManager.PlaySfx("popsiclefall");
         transform.position = _player.transform.position;
         transform.rotation = Quaternion.Euler(Vector3.zero);
         _rb.gravityScale = 1;

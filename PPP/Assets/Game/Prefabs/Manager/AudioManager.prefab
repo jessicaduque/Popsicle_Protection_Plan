@@ -49,6 +49,7 @@ MonoBehaviour:
   sfxGroup: {fileID: -3065478319022928601, guid: f0ba13bfb07a01145b762699e9795433, type: 2}
   musics:
   - {fileID: 11400000, guid: c5ade3cb58129d644a19a6884790b88b, type: 2}
+  - {fileID: 11400000, guid: 7c554a60eb5baf0408fc1b0ac07c514f, type: 2}
   sfx:
   - {fileID: 11400000, guid: ddd40a327c5404c4395f57ee9660d79c, type: 2}
   - {fileID: 11400000, guid: fed8cb7b2d7933043a6aea2bd6fcc1c7, type: 2}
@@ -61,3 +62,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1371278532c87f84288bd768bda0fec8, type: 2}
   - {fileID: 11400000, guid: c352b30a35141e74db05995fcb6733d5, type: 2}
   - {fileID: 11400000, guid: 8101669aac0134340920cbed9b1f49ae, type: 2}
+  - {fileID: 11400000, guid: 0308ad4b23015fe4b87157ea6c0c0ef2, type: 2}

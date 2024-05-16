@@ -30,6 +30,7 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
     [SerializeField] Animator _cutsceneAnimator;
 
     BlackScreenController _blackScreenController => BlackScreenController.I;
+    AudioManager _audioManager => AudioManager.I;
 
     private new void Awake()
     {
@@ -55,6 +56,7 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
     private void PlayButtonControl()
     {
         _blackScreenController.FadeOutScene("Main");
+        _audioManager.FadeOutMusic("menumusic");
     }
 
     #endregion
@@ -99,6 +101,7 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
     {
         _cutsceneAnimator.StopPlayback();
         _blackScreenController.FadePanel(_cutscenePanel, false);
+        _audioManager.FadeInMusic("menumusic");
     }
 
     #endregion

@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _pausePanel;
 
     private LevelController _levelController => LevelController.I;
-
+    private AudioManager _audioManager => AudioManager.I;
     private void Awake()
     {
         _playerUIActionsAsset = new Player_UI();
@@ -28,9 +28,14 @@ public class UIManager : MonoBehaviour
         _levelController.countdownEvent += () => { 
             Helpers.FadeOutPanel(_blessingPanel);
             Helpers.FadeInPanel(_countdownPanel);
+            _audioManager.FadeInMusic("mainmusic");
         };
-        _levelController.beginLevelEvent += () => Helpers.FadeCrossPanel(_countdownPanel, _hudPanel); 
-        _levelController.timeUpEvent += () => _gameoverPanels.SetActive(true);
+        _levelController.beginLevelEvent += () => Helpers.FadeCrossPanel(_countdownPanel, _hudPanel);
+        _levelController.timeUpEvent += () =>
+        {
+            _gameoverPanels.SetActive(true);
+            _audioManager.PlaySfx("levelend");
+        };
 
         _levelController.BeginBlessings();
     }

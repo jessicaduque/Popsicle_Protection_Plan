@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundName: clocktick
   clip: {fileID: 8300000, guid: c2919053163b7b84f9ffefb2a3c10df5, type: 3}
-  loop: 0
+  loop: 1
   volume: 1
   pitch: 1

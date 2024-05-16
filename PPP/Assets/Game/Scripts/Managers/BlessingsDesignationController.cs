@@ -21,6 +21,7 @@ public class BlessingsDesignationController : MonoBehaviour
     private int _polarBearChosenBlessing;
 
     LevelController _levelController => LevelController.I;
+    AudioManager _audioManager => AudioManager.I;
 
     private void Start()
     {
@@ -42,7 +43,9 @@ public class BlessingsDesignationController : MonoBehaviour
 
     private IEnumerator RandomizePowersStart()
     {
-        yield return new WaitForSeconds(0.6f + Helpers.blackFadeTime);
+        yield return new WaitForSeconds(1 + Helpers.blackFadeTime);
+
+        _audioManager.PlaySfx("drumroll");
 
         StartCoroutine(_penguinSpriteRandomizer.CardRandomization(_penguinChosenBlessing));
         StartCoroutine(_polarBearSpriteRandomizer.CardRandomization(_polarBearChosenBlessing));
@@ -50,7 +53,7 @@ public class BlessingsDesignationController : MonoBehaviour
 
     private IEnumerator RandomizePowersFinalAnimation()
     {
-        int animationTime = 4;
+        int animationTime = 3;
         float initialTime = 1;
 
         Sequence penguinSeq = DOTween.Sequence();

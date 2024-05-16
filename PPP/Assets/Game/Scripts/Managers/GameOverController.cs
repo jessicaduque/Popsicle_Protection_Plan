@@ -14,9 +14,6 @@ public class GameOverController : Singleton<GameOverController>
     private Button b_restart;
     private Button b_mainMenu;
 
-    private BlackScreenController _blackScreenController => BlackScreenController.I;
-    private LevelController _levelController => LevelController.I;
-
     private new void Awake()
     {
         
@@ -24,12 +21,6 @@ public class GameOverController : Singleton<GameOverController>
     private void Start()
     {
         CheckWinner();
-    }
-
-    private void OnDisable()
-    {
-        b_mainMenu.onClick.RemoveAllListeners();
-        b_restart.onClick.RemoveAllListeners();
     }
 
     private void CheckWinner()
@@ -79,8 +70,15 @@ public class GameOverController : Singleton<GameOverController>
         {
             yield return null;
         }
-        b_restart.onClick.AddListener(() => BlackScreenCircleEffectController.I.CircleScreenClose("Main"));
-        b_mainMenu.onClick.AddListener(() => BlackScreenCircleEffectController.I.CircleScreenClose("MainMenu"));
+        b_restart.onClick.AddListener(() => {
+            AudioManager.I.FadeOutMusic("mainmusic");
+            BlackScreenCircleEffectController.I.CircleScreenClose("Main");
+            });
+
+        b_mainMenu.onClick.AddListener(() => {
+            AudioManager.I.PlayCrossFade("menumusic");
+            BlackScreenCircleEffectController.I.CircleScreenClose("MainMenu");
+        });
         b_restart.enabled = true;
         b_mainMenu.enabled = true;
     }
