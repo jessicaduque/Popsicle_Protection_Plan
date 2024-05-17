@@ -29,7 +29,7 @@ public class CountdownController : Singleton<CountdownController>
         im_countdown.enabled = false;
         rt_imCountDown.localScale = Vector2.zero;
 
-        yield return new WaitForSecondsRealtime(Helpers.blackFadeTime + 0.2f);
+        yield return new WaitForSecondsRealtime(Helpers.blackFadeTime + 1f);
 
         im_countdown.enabled = true;
 

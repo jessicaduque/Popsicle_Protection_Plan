@@ -19,26 +19,20 @@ public class PowerUIShow : MonoBehaviour
         im_thisBackground = GetComponent<Image>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         im_thisFill.fillAmount = 1;
         if (_isPenguinBlessing)
         {
-            _levelController.blessingsRandomizedEvent += () =>
-            {
-                _thisPower = Player_Penguin_Controller.I.GetPower();
-                _thisPower.powerActivatedEvent += () => PowerUsed();
-                SetPowerDetails(_levelController._levelPenguinBlessingSO.power_rechargeTime, _levelController._levelPenguinBlessingSO.power_sprite);
-            };
+            SetPowerDetails(_levelController._levelPenguinBlessingSO.power_rechargeTime, _levelController._levelPenguinBlessingSO.power_sprite);
+            _thisPower = Player_Penguin_Controller.I.GetPower();
+            _thisPower.powerActivatedEvent += () => PowerUsed();
         }
         else
         {
-            _levelController.blessingsRandomizedEvent += () =>
-            {
-                _thisPower = Player_Polar_Bear_Controller.I.GetPower();
-                _thisPower.powerActivatedEvent += () => PowerUsed();
-                _levelController.blessingsRandomizedEvent += () => SetPowerDetails(_levelController._levelPolarBearBlessingSO.power_rechargeTime, _levelController._levelPolarBearBlessingSO.power_sprite);
-            };
+            SetPowerDetails(_levelController._levelPolarBearBlessingSO.power_rechargeTime, _levelController._levelPolarBearBlessingSO.power_sprite);
+            _thisPower = Player_Polar_Bear_Controller.I.GetPower();
+            _thisPower.powerActivatedEvent += () => PowerUsed();
         }
 
     }
@@ -51,14 +45,12 @@ public class PowerUIShow : MonoBehaviour
     public void PowerUsed()
     {
         im_thisFill.fillAmount = 0;
-        StartCoroutine(RechargeBlessing());
+        RechargeBlessing();
     }
 
-    private IEnumerator RechargeBlessing()
+    private void RechargeBlessing()
     {
-        DOTween.To(() => im_thisFill.fillAmount, x => im_thisFill.fillAmount = x, 1, _rechargeTime);
-        yield return new WaitForSeconds(_rechargeTime);
-        _thisPower.SetCanUsePower(true);
+        DOTween.To(() => im_thisFill.fillAmount, x => im_thisFill.fillAmount = x, 1, _rechargeTime).OnComplete(() => _thisPower.SetCanUsePower(true));
     }
 
     #region Set

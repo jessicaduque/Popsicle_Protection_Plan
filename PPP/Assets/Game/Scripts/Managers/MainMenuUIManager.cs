@@ -56,7 +56,7 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
     private void PlayButtonControl()
     {
         _blackScreenController.FadeOutScene("Main");
-        _audioManager.FadeOutMusic("menumusic");
+        //_audioManager.FadeOutMusic("menumusic");
     }
 
     #endregion
@@ -106,6 +106,7 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
 
     #endregion
 
+    #region Buttons
     private void ButtonThresholdSetup()
     {
         float threshold = 0.4f;
@@ -130,17 +131,14 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
         b_leaveSettings.onClick.AddListener(() => SettingsButtonControl(false));
         b_leaveCredits.onClick.AddListener(() => CreditsButtonControl(false));
         b_leaveHowToPlay.onClick.AddListener(() => HowToPlayButtonControl(false));
-        b_skip.onClick.AddListener(() => EndCutscene()); 
-        b_watchCutscene.onClick.AddListener(() => { _blackScreenController.FadePanel(_cutscenePanel, true); StartCoroutine(StartCutscene()); });
-    }
-
-    private IEnumerator WaitForPanelReady()
-    {
-        ButtonEnableControl(false);
-
-        yield return new WaitForSeconds(Helpers.blackFadeTime);
-
-        ButtonEnableControl(true);
+        b_skip.onClick.AddListener(() => {
+            EndCutscene();
+            _audioManager.FadeInMusic("menumusic");
+        }); 
+        b_watchCutscene.onClick.AddListener(() => {
+            _audioManager.FadeOutMusic("menumusic");
+            _blackScreenController.FadePanel(_cutscenePanel, true); StartCoroutine(StartCutscene()); 
+        });
     }
 
     private void ButtonEnableControl(bool state)
@@ -149,5 +147,15 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
         b_settings.enabled = state;
         b_credits.enabled = state;
         b_howToPlay.enabled = state;
+    }
+
+    #endregion
+    private IEnumerator WaitForPanelReady()
+    {
+        ButtonEnableControl(false);
+
+        yield return new WaitForSeconds(Helpers.blackFadeTime);
+
+        ButtonEnableControl(true);
     }
 }

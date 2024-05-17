@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils.Singleton;
@@ -11,8 +10,8 @@ public class GameOverController : Singleton<GameOverController>
 
     private GameObject _winnerPanel;
 
-    private Button b_restart;
-    private Button b_mainMenu;
+    private Button b_replay;
+    private Button b_exit;
 
     private new void Awake()
     {
@@ -47,13 +46,13 @@ public class GameOverController : Singleton<GameOverController>
         ButtonExtra[] buttons = _winnerPanel.GetComponentsInChildren<ButtonExtra>();
         for(int i=0; i< buttons.Length; i++)
         {
-            if(buttons[i].nameTag == "restart")
+            if(buttons[i].nameTag == "replay")
             {
-                b_restart = buttons[i].GetComponent<Button>();
+                b_replay = buttons[i].GetComponent<Button>();
             }
-            else if(buttons[i].nameTag == "menu")
+            else if(buttons[i].nameTag == "exit")
             {
-                b_mainMenu = buttons[i].GetComponent<Button>();
+                b_exit = buttons[i].GetComponent<Button>();
             }
         }
         StartCoroutine(WaitForPanelReady());
@@ -64,22 +63,22 @@ public class GameOverController : Singleton<GameOverController>
     {
         CanvasGroup panelCG = _winnerPanel.GetComponent<CanvasGroup>();
         panelCG.alpha = 0;
-        b_restart.enabled = false;
-        b_mainMenu.enabled = false;
+        b_replay.enabled = false;
+        b_exit.enabled = false;
         while (panelCG.alpha != 1)
         {
             yield return null;
         }
-        b_restart.onClick.AddListener(() => {
+        b_replay.onClick.AddListener(() => {
             AudioManager.I.FadeOutMusic("mainmusic");
             BlackScreenCircleEffectController.I.CircleScreenClose("Main");
             });
 
-        b_mainMenu.onClick.AddListener(() => {
+        b_exit.onClick.AddListener(() => {
             AudioManager.I.PlayCrossFade("menumusic");
             BlackScreenCircleEffectController.I.CircleScreenClose("MainMenu");
         });
-        b_restart.enabled = true;
-        b_mainMenu.enabled = true;
+        b_replay.enabled = true;
+        b_exit.enabled = true;
     }
 }

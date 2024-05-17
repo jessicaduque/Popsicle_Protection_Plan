@@ -24,6 +24,7 @@ public class SmallSnowball : Snowball
     {
         base.OnTriggerEnter2D(collision);
         _poolmanager.ReturnPool(this.gameObject);
-        _audioManager.PlaySfx("smallsnowballhit");
+        if(collision.CompareTag("Player"))
+            _audioManager.PlaySfx("smallsnowballhit");
     }
 }

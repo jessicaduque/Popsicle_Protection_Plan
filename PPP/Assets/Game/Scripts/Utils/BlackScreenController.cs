@@ -7,6 +7,8 @@ public class BlackScreenController : Singleton<BlackScreenController>
 {
     [SerializeField] private GameObject _blackScreen_Panel;
     [SerializeField] private CanvasGroup _blackScreen_CanvasGroup;
+
+    private bool _gameStart = true;
     private float _blackFadeTime => Helpers.blackFadeTime;
     private BlackScreenCircleEffectController _blackScreenCircleEffectController => BlackScreenCircleEffectController.I;
 
@@ -22,7 +24,14 @@ public class BlackScreenController : Singleton<BlackScreenController>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name != "Main")
+        {
             FadeInSceneStart();
+            if (!_gameStart)
+            {
+                MainMenuUIManager.I.EndCutscene();
+            }
+            _gameStart = false;
+        }
         else
         {
             _blackScreen_Panel.SetActive(false);

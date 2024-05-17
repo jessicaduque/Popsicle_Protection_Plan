@@ -15,5 +15,5 @@ MonoBehaviour:
   soundName: mainmusic
   clip: {fileID: 8300000, guid: 9dec00a7ed94db74e8ab30dc9fa97d52, type: 3}
   loop: 1
-  volume: 1
+  volume: 0.13
   pitch: 1
