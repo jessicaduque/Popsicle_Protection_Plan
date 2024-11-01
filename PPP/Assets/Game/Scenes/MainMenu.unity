@@ -2004,6 +2004,7 @@ GameObject:
   - component: {fileID: 504557122}
   - component: {fileID: 504557121}
   - component: {fileID: 504557123}
+  - component: {fileID: 504557124}
   m_Layer: 5
   m_Name: ArrowRight
   m_TagString: Untagged
@@ -2114,8 +2115,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1129974049}
         m_TargetAssemblyTypeName: HowToPlayUI, Assembly-CSharp
-        m_MethodName: GoToSecondPage
-        m_Mode: 1
+        m_MethodName: ChangePage
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2124,6 +2125,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &504557124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504557119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdadaf856e2bb6040bb36d3cb27f747b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <nameTag>k__BackingField: rightarrow
 --- !u!1 &513821401
 GameObject:
   m_ObjectHideFlags: 0
@@ -4774,10 +4788,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.65
-  m_fontSizeBase: 36
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -5310,10 +5324,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.8
-  m_fontSizeBase: 36
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -5765,6 +5779,7 @@ GameObject:
   - component: {fileID: 1138556598}
   - component: {fileID: 1138556597}
   - component: {fileID: 1138556599}
+  - component: {fileID: 1138556600}
   m_Layer: 5
   m_Name: ArrowLeft
   m_TagString: Untagged
@@ -5875,16 +5890,29 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1129974049}
         m_TargetAssemblyTypeName: HowToPlayUI, Assembly-CSharp
-        m_MethodName: GoToFirstPage
-        m_Mode: 1
+        m_MethodName: ChangePage
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &1138556600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138556595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdadaf856e2bb6040bb36d3cb27f747b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <nameTag>k__BackingField: leftarrow
 --- !u!1 &1154341347
 GameObject:
   m_ObjectHideFlags: 0
@@ -7899,10 +7927,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.15
-  m_fontSizeBase: 36
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -8802,10 +8830,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.9
-  m_fontSizeBase: 36
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0

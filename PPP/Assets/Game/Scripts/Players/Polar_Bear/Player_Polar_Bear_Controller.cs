@@ -152,15 +152,15 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
         {
             return;
         }
+        _canAttack = false;
 
         AnimationTrigger("Attack");
         StartCoroutine(AttackCoolDown());
-        _canAttack = false;
     }
 
     public void SpawnSnowball()
     {
-        _poolManager.GetObject(_attackPoolItem.tagPool, _attackPoint.position, Quaternion.identity);
+        GameObject snowball = _poolManager.GetObject(_attackPoolItem.tagPool, _attackPoint.position, Quaternion.identity);
     }
 
     private IEnumerator AttackCoolDown()

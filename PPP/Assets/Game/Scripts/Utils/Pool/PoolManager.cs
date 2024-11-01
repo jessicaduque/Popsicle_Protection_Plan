@@ -13,10 +13,7 @@ public class PoolManager : Singleton<PoolManager>
     private new void Awake()
     {
         _poolDictionary = new Dictionary<string, Queue<GameObject>>();
-    }
 
-    private void OnEnable()
-    {
         FillPool();
     }
 

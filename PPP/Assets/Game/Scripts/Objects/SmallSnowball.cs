@@ -23,8 +23,7 @@ public class SmallSnowball : Snowball
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        _poolmanager.ReturnPool(this.gameObject);
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
             _audioManager.PlaySfx("smallsnowballhit");
     }
 }

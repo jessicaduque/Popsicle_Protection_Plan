@@ -20,7 +20,6 @@ public class Popsicle : MonoBehaviour
 
     private void OnEnable()
     {
-        _audioManager.PlaySfx("popsiclefall");
         transform.position = _player.transform.position;
         transform.rotation = Quaternion.Euler(Vector3.zero);
         _rb.gravityScale = 1;
@@ -40,6 +39,7 @@ public class Popsicle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            _audioManager.PlaySfx("popsicleget");
             _playerPenguinController.SetHasPopsicle(true);
             this.gameObject.SetActive(false);
         }

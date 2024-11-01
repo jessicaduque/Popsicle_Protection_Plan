@@ -10,19 +10,22 @@ public class HowToPlayUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI _pageTitle;
     [SerializeField] TextMeshProUGUI _pageNumber;
 
-    public void GoToFirstPage()
+    public void ChangePage(bool goToFirst)
     {
-        DOTween.KillAll();
-        _secondPageCG.DOFade(0, 0.3f).OnComplete(() => _firstPageCG.DOFade(1, 0.3f));
-        _pageTitle.text = "How To Play";
-        _pageNumber.text = "1/2";
-    }
-    public void GoToSecondPage()
-    {
-        DOTween.KillAll();
-        _firstPageCG.DOFade(0, 0.3f).OnComplete(() => _secondPageCG.DOFade(1, 0.3f));
-        _pageTitle.text = "How To Win";
-        _pageNumber.text = "2/2";
+        _firstPageCG.DOFade((goToFirst ? 1 : 0), 0.3f);
+        _secondPageCG.DOFade((goToFirst ? 0 : 1), 0.3f);
+
+        if (goToFirst)
+        {
+            _pageTitle.text = "How To Play";
+            _pageNumber.text = "1/2";
+        }
+        else
+        {
+            _pageTitle.text = "How To Win";
+            _pageNumber.text = "2/2";
+        }
+
     }
 }
 

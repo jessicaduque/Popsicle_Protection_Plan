@@ -33,7 +33,7 @@ public class TimeCountManager : Singleton<TimeCountManager>
 
                 if (!_timerEnding && _currentTime <= 6)
                 {
-                    _audioManager.PlaySfx2("ClockTick");
+                    _audioManager.PlaySfx2("clocktick");
                     _timerEnding = true;
                 }
                 else if (_currentTime <= 0)
