@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -13,10 +11,15 @@ public class PowerUIShow : MonoBehaviour
     private float _rechargeTime;
     private Image im_thisBackground;
     private Power _thisPower;
-    LevelController _levelController => LevelController.I;
+    LevelController _levelController;
     private void Awake()
     {
         im_thisBackground = GetComponent<Image>();
+    }
+
+    private void Start()
+    {
+        _levelController = LevelController.I;
     }
 
     private void OnEnable()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,7 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _gameoverPanels;
     [SerializeField] private GameObject _pausePanel;
 
-    private LevelController _levelController => LevelController.I;
+    private LevelController _levelController;
     private AudioManager _audioManager => AudioManager.I;
     private void Awake()
     {
@@ -24,6 +22,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        _levelController = LevelController.I;
         _levelController.blessingsEvent += () => _blessingPanel.SetActive(true);
         _levelController.countdownEvent += () => { 
             Helpers.FadeOutPanel(_blessingPanel);

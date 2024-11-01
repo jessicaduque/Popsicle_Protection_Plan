@@ -25,7 +25,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     // Power
     [SerializeField] private Power_SO _powerSO;
     [SerializeField] private Power _powerScript;
-    private LevelController _levelController => LevelController.I;
+    private LevelController _levelController;
 
     private new void Awake()
     {
@@ -38,6 +38,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 
     private void Start()
     {
+        _levelController = LevelController.I;
         _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPenguinBlessingSO, _levelController._levelPenguinBlessing);
     }
 

@@ -27,8 +27,8 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
     [SerializeField] private Power_SO _powerSO;
     [SerializeField] private Power _powerScript;
 
+    private LevelController _levelController;
     private PoolManager _poolManager => PoolManager.I;
-    private LevelController _levelController => LevelController.I;
 
     private new void Awake()
     {
@@ -38,6 +38,7 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
     }
     private void Start()
     {
+        _levelController = LevelController.I;
         _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPolarBearBlessingSO, _levelController._levelPolarBearBlessing);
     }
     private void OnEnable()

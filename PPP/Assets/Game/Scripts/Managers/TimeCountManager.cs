@@ -15,7 +15,7 @@ public class TimeCountManager : Singleton<TimeCountManager>
     private bool _timerEnding = false;
     private bool _startTimer;
 
-    private LevelController _levelController => LevelController.I;
+    private LevelController _levelController;
     private AudioManager _audioManager => AudioManager.I;
 
     protected new void Awake() 
@@ -23,6 +23,12 @@ public class TimeCountManager : Singleton<TimeCountManager>
         _currentTime = _startTime + 1;
         SetTimeText();
     }
+
+    private void Start()
+    {
+        _levelController = LevelController.I;
+    }
+
     private void Update()
     {
         if (_levelController.GetLevelState() == LevelState.BEGIN)
