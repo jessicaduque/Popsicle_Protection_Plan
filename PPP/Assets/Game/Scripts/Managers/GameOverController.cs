@@ -15,25 +15,7 @@ public class GameOverController : Singleton<GameOverController>
 
     private void Start()
     {
-        CheckWinner();
-    }
-
-    private void CheckWinner()
-    {
-        if (Player_Polar_Bear_Controller.I._isDead)
-        {
-            GameOverPanelControl(false);
-            return;
-        }
-
-        if (Player_Penguin_Controller.I._hasPopsicle)
-        {
-            GameOverPanelControl(true);
-        }
-        else
-        {
-            GameOverPanelControl(false);
-        }
+        GameOverPanelControl(LevelController.I.GetPenguinIsWinner());
     }
 
     private void GameOverPanelControl(bool winnerIsPenguin)

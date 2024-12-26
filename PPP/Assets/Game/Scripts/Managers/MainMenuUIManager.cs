@@ -49,7 +49,7 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
     private void PlayButtonControl()
     {
         _blackScreenController.FadeOutScene("Main");
-        //_audioManager.FadeOutMusic("menumusic");
+        _audioManager.FadeOutMusic("menumusic");
     }
 
     #endregion

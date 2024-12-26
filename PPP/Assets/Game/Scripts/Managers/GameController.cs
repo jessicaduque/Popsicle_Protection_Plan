@@ -8,9 +8,10 @@ public class GameController : DontDestroySingleton<GameController>
     
     private void Start()
     {
+        _blackScreenController.FadeInSceneStart();
+        
         if (!PlayerPrefs.HasKey("FirstPlay") || PlayerPrefs.GetInt("FirstPlay") == 0)
         {
-            _blackScreenController.FadeInSceneStart();
             MainMenuUIManager.I.StartCoroutine(MainMenuUIManager.I.StartCutscene());
             PlayerPrefs.SetInt("FirstPlay", 1);
         }
@@ -28,6 +29,7 @@ public class GameController : DontDestroySingleton<GameController>
         if (scene.name == "MainMenu")
         {
             MainMenuUIManager.I.DisableCutscene();
+            _blackScreenController.FadeInSceneStart();
         }
     }
 }

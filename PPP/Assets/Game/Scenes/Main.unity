@@ -32285,6 +32285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1206190411}
   - component: {fileID: 1206190412}
+  - component: {fileID: 1206190413}
   m_Layer: 5
   m_Name: GameOverPanels
   m_TagString: Untagged
@@ -32327,6 +32328,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _penguinWinnerPanel: {fileID: 2005273309}
   _polarBearWinnerPanel: {fileID: 329983165}
+--- !u!225 &1206190413
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206190410}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1231648383
 GameObject:
   m_ObjectHideFlags: 0
@@ -32951,7 +32964,7 @@ MonoBehaviour:
   _blessingPanel: {fileID: 15365859}
   _countdownPanel: {fileID: 268386518}
   _hudPanel: {fileID: 302840901}
-  _gameoverPanels: {fileID: 1206190410}
+  _gameOverPanel: {fileID: 1206190410}
   _pausePanel: {fileID: 1598142141}
 --- !u!1001 &1414402673
 PrefabInstance:
@@ -33008,6 +33021,22 @@ PrefabInstance:
     - target: {fileID: 3856431074328503684, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
       propertyPath: m_Name
       value: Player_Penguin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860485605408520392, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860485605408520392, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860485605408520392, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1177475785, guid: 7446e0c76bbb3124a8aadca917efe2f7, type: 3}
+    - target: {fileID: 4860485605408520392, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

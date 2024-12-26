@@ -42,7 +42,13 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     {
         _levelController.beginLevelEvent += EnableInputs;
 
-        _levelController.timeUpEvent += DisableInputs;
+        _levelController.timeUpEvent += delegate { 
+            DisableInputs();
+            if (_levelController.GetPenguinIsWinner()) 
+                AnimationVictory(); 
+            else 
+                AnimationDefeat(); 
+        };
         _levelController.pauseEvent += DisableInputs;
         
         _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPenguinBlessingSO, _levelController._levelPenguinBlessing);
@@ -74,6 +80,21 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     private void AnimationPopsicleControl(bool state)
     {
         _animator.SetLayerWeight(1, (state ? 1 : 0));
+    }
+
+    private void AnimationVictory()
+    {
+        _animator.SetTrigger("Victory");
+    }
+    
+    private void AnimationDefeat()
+    {
+        _animator.SetTrigger("Defeat");
+    }
+
+    public void AnimationGameOverFinished()
+    {
+        UIManager.I.ActiavateGameOverPanel();
     }
 
     #endregion

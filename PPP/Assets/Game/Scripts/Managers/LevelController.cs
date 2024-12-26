@@ -12,6 +12,7 @@ public class LevelController : Singleton<LevelController>
     public event Action blessingsRandomizedEvent;
 
     private LevelState _levelState;
+    private bool _penguinIsWinner = true;
     public Power_SO _levelPenguinBlessingSO { get; private set; }
     public Power_SO _levelPolarBearBlessingSO { get; private set; }
     public Power _levelPenguinBlessing { get; private set; }
@@ -55,6 +56,10 @@ public class LevelController : Singleton<LevelController>
     public void TimeUp()
     {
         _levelState = LevelState.END;
+        if (Player_Polar_Bear_Controller.I._isDead || !Player_Penguin_Controller.I._hasPopsicle)
+        {
+            _penguinIsWinner = false;
+        }
         timeUpEvent?.Invoke();
     }
 
@@ -64,6 +69,11 @@ public class LevelController : Singleton<LevelController>
     public LevelState GetLevelState()
     {
         return _levelState;
+    }
+
+    public bool GetPenguinIsWinner()
+    {
+        return _penguinIsWinner;
     }
 
     #endregion

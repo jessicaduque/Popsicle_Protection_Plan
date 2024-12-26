@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utils.Singleton;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     // Input fields
     private Player_UI _playerUIActionsAsset;
@@ -10,13 +11,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _blessingPanel;
     [SerializeField] private GameObject _countdownPanel;
     [SerializeField] private GameObject _hudPanel;
-    [SerializeField] private GameObject _gameoverPanels;
+    [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private GameObject _pausePanel;
 
     LevelController _levelController => LevelController.I;
     private AudioManager _audioManager => AudioManager.I;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         _playerUIActionsAsset = new Player_UI();
     }
 
@@ -35,7 +38,6 @@ public class UIManager : MonoBehaviour
         _levelController.timeUpEvent += () =>
         {
             DisableInputs();
-            _gameoverPanels.SetActive(true);
             _audioManager.PlaySfx("levelend");
         };
 
@@ -60,6 +62,15 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
+    #region Gameover Control
+
+    public void ActiavateGameOverPanel()
+    {
+        Helpers.FadeInPanel(_gameOverPanel);
+    }
+    
+    #endregion
+    
     #region Pause Control
 
     private void DoPauseControl(InputAction.CallbackContext obj)
