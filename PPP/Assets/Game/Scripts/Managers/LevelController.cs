@@ -20,9 +20,8 @@ public class LevelController : Singleton<LevelController>
     #region Blessings Designation 
     public void BeginBlessings()
     {
-        //_levelState = LevelState.POWER_DESIGNATION;
-        //blessingsEvent?.Invoke();
-        BeginCountdown();
+        _levelState = LevelState.POWER_DESIGNATION;
+        blessingsEvent?.Invoke();
     }
     #endregion
 

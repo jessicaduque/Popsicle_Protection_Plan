@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utils.Singleton;
 
@@ -7,8 +8,17 @@ public class GameController : DontDestroySingleton<GameController>
     
     private void Start()
     {
-        _blackScreenController.FadeInSceneStart();
-        MainMenuUIManager.I.StartCoroutine(MainMenuUIManager.I.StartCutscene());
+        if (!PlayerPrefs.HasKey("FirstPlay") || PlayerPrefs.GetInt("FirstPlay") == 0)
+        {
+            _blackScreenController.FadeInSceneStart();
+            MainMenuUIManager.I.StartCoroutine(MainMenuUIManager.I.StartCutscene());
+            PlayerPrefs.SetInt("FirstPlay", 1);
+        }
+        else
+        {
+            MainMenuUIManager.I.DisableCutscene();
+        }
+        
         
         SceneManager.sceneLoaded += OnSceneLoaded;
     }

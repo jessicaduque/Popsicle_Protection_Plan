@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using Utils.Singleton;
+using Random = UnityEngine.Random;
 
-public class BlessingsDesignationController : MonoBehaviour
+public class BlessingsDesignationController : Singleton<BlessingsDesignationController>
 {
     [SerializeField] RandomizeCard _penguinSpriteRandomizer;
     [SerializeField] RandomizeCard _polarBearSpriteRandomizer;
@@ -77,6 +80,10 @@ public class BlessingsDesignationController : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
+        foreach (PowerUIShow power in FindObjectsOfType<PowerUIShow>())
+        {
+            power.SetPowers();
+        }
         _levelController.BeginCountdown();
     }
 

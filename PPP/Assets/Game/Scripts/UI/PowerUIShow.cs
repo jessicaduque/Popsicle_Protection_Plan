@@ -12,29 +12,11 @@ public class PowerUIShow : MonoBehaviour
     private Image im_thisBackground;
     private Power _thisPower;
     LevelController _levelController => LevelController.I;
-    private Player_Penguin_Controller _playerPenguinController => Player_Penguin_Controller.I;
 
     private void Awake()
     {
         im_thisBackground = GetComponent<Image>();
-    }
-
-    private void OnEnable()
-    {
         im_thisFill.fillAmount = 1;
-        if (_isPenguinBlessing)
-        {
-            SetPowerDetails(_levelController._levelPenguinBlessingSO.power_rechargeTime, _levelController._levelPenguinBlessingSO.power_sprite);
-            _thisPower = _playerPenguinController.GetPower();
-            _thisPower.powerActivatedEvent += () => PowerUsed();
-        }
-        else
-        {
-            SetPowerDetails(_levelController._levelPolarBearBlessingSO.power_rechargeTime, _levelController._levelPolarBearBlessingSO.power_sprite);
-            _thisPower = Player_Polar_Bear_Controller.I.GetPower();
-            _thisPower.powerActivatedEvent += () => PowerUsed();
-        }
-
     }
 
     private void OnDisable()
@@ -54,6 +36,20 @@ public class PowerUIShow : MonoBehaviour
     }
 
     #region Set
+    public void SetPowers()
+    {
+        if (_isPenguinBlessing)
+        {
+            SetPowerDetails(_levelController._levelPenguinBlessingSO.power_rechargeTime, _levelController._levelPenguinBlessingSO.power_sprite);
+            _thisPower = Player_Penguin_Controller.I.GetPower();
+        }
+        else
+        {
+            SetPowerDetails(_levelController._levelPolarBearBlessingSO.power_rechargeTime, _levelController._levelPolarBearBlessingSO.power_sprite);
+            _thisPower = Player_Polar_Bear_Controller.I.GetPower();
+        }
+        _thisPower.powerActivatedEvent += () => PowerUsed();
+    }
     private void SetPowerDetails(float rechargeTime, Sprite blessingSprite)
     {
         this._rechargeTime = rechargeTime;

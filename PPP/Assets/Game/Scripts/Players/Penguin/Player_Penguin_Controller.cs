@@ -100,7 +100,6 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 
     private void DoPowerControl(InputAction.CallbackContext obj)
     {
-        Debug.Log("do power control");
         _powerScript.UsePower();
     }
 

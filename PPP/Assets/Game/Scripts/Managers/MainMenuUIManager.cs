@@ -100,6 +100,7 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
     public void DisableCutscene()
     {
         _cutscenePanel.SetActive(false);
+        _audioManager.FadeInMusic("menumusic");
     }
 
     #endregion
@@ -129,10 +130,7 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
         b_leaveSettings.onClick.AddListener(() => SettingsButtonControl(false));
         b_leaveCredits.onClick.AddListener(() => CreditsButtonControl(false));
         b_leaveHowToPlay.onClick.AddListener(() => HowToPlayButtonControl(false));
-        b_skip.onClick.AddListener(() => {
-            EndCutscene();
-            _audioManager.FadeInMusic("menumusic");
-        }); 
+        b_skip.onClick.AddListener(EndCutscene); 
         b_watchCutscene.onClick.AddListener(() => {
             _audioManager.FadeOutMusic("menumusic");
             _blackScreenController.FadePanel(_cutscenePanel, true); StartCoroutine(StartCutscene()); 
