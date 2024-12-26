@@ -11,15 +11,12 @@ public class PowerUIShow : MonoBehaviour
     private float _rechargeTime;
     private Image im_thisBackground;
     private Power _thisPower;
-    LevelController _levelController;
+    LevelController _levelController => LevelController.I;
+    private Player_Penguin_Controller _playerPenguinController => Player_Penguin_Controller.I;
+
     private void Awake()
     {
         im_thisBackground = GetComponent<Image>();
-    }
-
-    private void Start()
-    {
-        _levelController = LevelController.I;
     }
 
     private void OnEnable()
@@ -28,7 +25,7 @@ public class PowerUIShow : MonoBehaviour
         if (_isPenguinBlessing)
         {
             SetPowerDetails(_levelController._levelPenguinBlessingSO.power_rechargeTime, _levelController._levelPenguinBlessingSO.power_sprite);
-            _thisPower = Player_Penguin_Controller.I.GetPower();
+            _thisPower = _playerPenguinController.GetPower();
             _thisPower.powerActivatedEvent += () => PowerUsed();
         }
         else
@@ -42,7 +39,7 @@ public class PowerUIShow : MonoBehaviour
 
     private void OnDisable()
     {
-        StopAllCoroutines();
+        DOTween.KillAll();
     }
 
     public void PowerUsed()

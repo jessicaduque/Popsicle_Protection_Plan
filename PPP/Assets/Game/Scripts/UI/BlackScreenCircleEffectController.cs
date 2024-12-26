@@ -3,7 +3,7 @@ using Utils.Singleton;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
-public class BlackScreenCircleEffectController : Singleton<BlackScreenCircleEffectController>
+public class BlackScreenCircleEffectController : DontDestroySingleton<BlackScreenCircleEffectController>
 {
     [SerializeField] private GameObject _circle;
     private RectTransform _circleRT;

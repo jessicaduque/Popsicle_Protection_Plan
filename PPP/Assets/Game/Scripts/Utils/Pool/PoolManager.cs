@@ -10,8 +10,10 @@ public class PoolManager : Singleton<PoolManager>
 
     private List<GameObject> _containers = new List<GameObject>();
 
-    private new void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         _poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         FillPool();

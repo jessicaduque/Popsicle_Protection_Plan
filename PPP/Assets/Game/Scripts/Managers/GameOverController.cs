@@ -13,10 +13,6 @@ public class GameOverController : Singleton<GameOverController>
     private Button b_replay;
     private Button b_exit;
 
-    private new void Awake()
-    {
-        
-    }
     private void Start()
     {
         CheckWinner();

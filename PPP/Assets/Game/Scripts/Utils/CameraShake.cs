@@ -1,19 +1,18 @@
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CameraShake : MonoBehaviour
 {
     private float _duration = 1f;
     [SerializeField] private AnimationCurve _curve;
+    
+    private Player_Penguin_Controller _playerPenguinController => Player_Penguin_Controller.I;
 
-    private void OnEnable()
-    {
-        Player_Penguin_Controller.I.HealthAffectedEvent += DoCameraShake;
-    }
 
-    private void OnDisable()
+    private void Start()
     {
-        Player_Penguin_Controller.I.HealthAffectedEvent -= DoCameraShake;
+        _playerPenguinController.HealthAffectedEvent += DoCameraShake;
     }
 
     private void DoCameraShake()

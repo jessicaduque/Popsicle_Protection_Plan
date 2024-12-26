@@ -20,13 +20,11 @@ public class BlessingsDesignationController : MonoBehaviour
     private int _penguinChosenBlessing;
     private int _polarBearChosenBlessing;
 
-    LevelController _levelController;
+    LevelController _levelController => LevelController.I;
     AudioManager _audioManager => AudioManager.I;
 
     private void Start()
     {
-        _levelController = LevelController.I;
-
         _penguinBlessingTextBackground.transform.localScale = Vector3.zero;
         _polarBearBlessingTextBackground.transform.localScale = Vector3.zero;
 
@@ -79,7 +77,7 @@ public class BlessingsDesignationController : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
-        LevelController.I.BeginCountdown();
+        _levelController.BeginCountdown();
     }
 
     #region Get

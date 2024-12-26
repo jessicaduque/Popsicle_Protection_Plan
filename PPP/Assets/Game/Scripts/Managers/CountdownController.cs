@@ -10,27 +10,31 @@ public class CountdownController : Singleton<CountdownController>
     [SerializeField] private Sprite[] _countdownSprites;
     [SerializeField] private GameObject _countdownPanel;
 
+    private float timeToWait;
+    
     private RectTransform rt_imCountDown;
     private AudioManager _audioManager => AudioManager.I;
 
-    protected new void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         rt_imCountDown = im_countdown.GetComponent<RectTransform>();
+        timeToWait = Helpers.blackFadeTime + 1f;
     }
 
     private void OnEnable()
     {
-        StartCoroutine(CountdownToStart());
+        StartCoroutine(CountdownToStartCoroutine());
     }
 
     #region Start Countdown
-    public IEnumerator CountdownToStart()
+    public IEnumerator CountdownToStartCoroutine()
     {
         im_countdown.enabled = false;
         rt_imCountDown.localScale = Vector2.zero;
-
-        yield return new WaitForSecondsRealtime(Helpers.blackFadeTime + 1f);
-
+        yield return new WaitForSecondsRealtime(timeToWait);
+        timeToWait = 0; // After first countdown (when game starts), waittime becomes 0, since there isn't any black circle panels to wait for anymore
         im_countdown.enabled = true;
 
         int i = 0;

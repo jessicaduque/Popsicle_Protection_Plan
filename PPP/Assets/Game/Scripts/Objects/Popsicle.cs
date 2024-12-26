@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
@@ -9,13 +10,15 @@ public class Popsicle : MonoBehaviour
     [SerializeField] private BoxCollider2D _collider;
     [SerializeField] private float _torqueForce;
     [SerializeField] private float _impulseForce = 4;
+    
     private Player_Penguin_Controller _playerPenguinController => Player_Penguin_Controller.I;
     AudioManager _audioManager => AudioManager.I;
+    
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _player = Player_Penguin_Controller.I.gameObject;
         _collider.enabled = false;
+        _player = _playerPenguinController.gameObject;
     }
 
     private void OnEnable()

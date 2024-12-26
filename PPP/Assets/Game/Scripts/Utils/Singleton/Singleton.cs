@@ -7,7 +7,7 @@ namespace Utils.Singleton
     /// </summary>
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        private static T _instance;
+        protected static T _instance;
         public static T I
         {
             get
@@ -28,12 +28,9 @@ namespace Utils.Singleton
 
         protected virtual void Awake()
         {
-            transform.SetParent(null, true);
-
             if (_instance == null)
             {
                 _instance = this as T;
-                DontDestroyOnLoad(this.gameObject);
             }
             else
             {

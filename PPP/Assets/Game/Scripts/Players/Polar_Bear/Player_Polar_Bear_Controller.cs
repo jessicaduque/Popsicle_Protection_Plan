@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,34 +26,26 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
     [SerializeField] private Power_SO _powerSO;
     [SerializeField] private Power _powerScript;
 
-    private LevelController _levelController;
+    LevelController _levelController => LevelController.I;
     private PoolManager _poolManager => PoolManager.I;
 
-    private new void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         _animator = GetComponent<Animator>();
         _playerPolarBearActionsAsset = new Player_Polar_Bear();
         _move = _playerPolarBearActionsAsset.Player.Move;
     }
+
     private void Start()
-    {
-        _levelController = LevelController.I;
-        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPolarBearBlessingSO, _levelController._levelPolarBearBlessing);
-    }
-    private void OnEnable()
     {
         _levelController.beginLevelEvent += EnableInputs;
 
         _levelController.timeUpEvent += DisableInputs;
         _levelController.pauseEvent += DisableInputs;
-    }
-
-    private void OnDisable()
-    {
-        _levelController.beginLevelEvent -= EnableInputs;
-
-        _levelController.timeUpEvent -= DisableInputs;
-        _levelController.pauseEvent -= DisableInputs;
+        
+        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPolarBearBlessingSO, _levelController._levelPolarBearBlessing);
     }
 
     private void FixedUpdate()

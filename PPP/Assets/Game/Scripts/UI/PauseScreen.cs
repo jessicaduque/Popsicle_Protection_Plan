@@ -12,7 +12,7 @@ public class PauseScreen : MonoBehaviour
     [SerializeField] Button[] _buttons;
 
     BlackScreenController _blackScreenController => BlackScreenController.I;
-
+    private LevelController _levelController => LevelController.I;
     private void Start()
     {
         SetupButtons();
@@ -50,7 +50,7 @@ public class PauseScreen : MonoBehaviour
                     _buttons[i].onClick.AddListener(() => {
                         ButtonsActivationControl(false);
                         Helpers.FadeOutPanel(this.gameObject);
-                        LevelController.I.BeginCountdown();
+                        _levelController.BeginCountdown();
                     });
                     break;
                 case "restart":

@@ -32,18 +32,11 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
     BlackScreenController _blackScreenController => BlackScreenController.I;
     AudioManager _audioManager => AudioManager.I;
 
-    private new void Awake()
-    {
-
-    }
-
     private void OnEnable()
     {
         StartCoroutine(WaitForPanelReady());
         ButtonThresholdSetup();
         AddButtonListeners();
-
-        StartCoroutine(StartCutscene());
     }
 
     private void OnDisable()
@@ -90,7 +83,7 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
 
     #region Cutscene
 
-    private IEnumerator StartCutscene()
+    public IEnumerator StartCutscene()
     {
         yield return new WaitForSeconds(1);
         _cutsceneAnimator.SetTrigger("Start");
@@ -102,6 +95,11 @@ public class MainMenuUIManager : Singleton<MainMenuUIManager>
         _cutsceneAnimator.StopPlayback();
         _blackScreenController.FadePanel(_cutscenePanel, false);
         _audioManager.FadeInMusic("menumusic");
+    }
+
+    public void DisableCutscene()
+    {
+        _cutscenePanel.SetActive(false);
     }
 
     #endregion

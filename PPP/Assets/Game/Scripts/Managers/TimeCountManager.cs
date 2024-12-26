@@ -1,6 +1,7 @@
-using Utils.Singleton;
 using TMPro;
 using UnityEngine;
+using System.Collections;
+using Utils.Singleton;
 
 public class TimeCountManager : Singleton<TimeCountManager>
 {
@@ -13,60 +14,99 @@ public class TimeCountManager : Singleton<TimeCountManager>
 
     private bool _timeOver = false;
     private bool _timerEnding = false;
-    private bool _startTimer;
 
-    private LevelController _levelController;
+    private LevelController _levelController => LevelController.I;
     private AudioManager _audioManager => AudioManager.I;
 
     protected new void Awake() 
     {
+        base.Awake();
+        
         _currentTime = _startTime + 1;
         SetTimeText();
     }
 
     private void Start()
     {
-        _levelController = LevelController.I;
+        _levelController.beginLevelEvent += delegate { StartCoroutine(StartTimer()); };
+        _levelController.pauseEvent += StopAllCoroutines;
     }
 
-    private void Update()
+    private IEnumerator StartTimer()
     {
-        if (_levelController.GetLevelState() == LevelState.BEGIN)
+        while (!_timeOver)
         {
-            if (!_timeOver)
-            {
-                _currentTime -= Time.deltaTime;
+            _currentTime -= Time.deltaTime;
 
-                if (!_timerEnding && _currentTime <= 6)
-                {
-                    _audioManager.PlaySfx2("clocktick");
-                    _timerEnding = true;
-                }
-                else if (_currentTime <= 0)
-                {
-                    _audioManager.StopSfx2();
-                    _timeOver = true;
-                }
-                else if (_currentTime > 6)
-                {
-                    _audioManager.StopSfx2();
-                    _timerEnding = false;
-                }
-
-                SetTimeText();
-            }
-            else
+            if (!_timerEnding && _currentTime <= 6)
             {
-                _levelController.TimeUp();
+                _audioManager.PlaySfx2("clocktick");
+                _timerEnding = true;
             }
-        }
-        else
-        {
-            _audioManager.StopSfx2();
-            _timerEnding = false;
+            else if (_currentTime <= 0)
+            {
+                _audioManager.StopSfx2();
+                _timeOver = true;
+            }
+            else if (_currentTime > 6)
+            {
+                _audioManager.StopSfx2();
+                _timerEnding = false;
+            }
+
+            SetTimeText();
+            yield return null;
         }
 
+        TimerEnd();
+        _levelController.TimeUp();
     }
+
+    private void TimerEnd()
+    {
+        _audioManager.StopSfx2();
+        _timerEnding = false;
+    }
+
+    //private void Update()
+    //{
+    //    if (_levelController.GetLevelState() == LevelState.BEGIN)
+    //    {
+    //        if (!_timeOver)
+    //        {
+    //            _currentTime -= Time.deltaTime;
+
+    //            if (!_timerEnding && _currentTime <= 6)
+    //            {
+    //                _audioManager.PlaySfx2("clocktick");
+    //                _timerEnding = true;
+    //            }
+    //            else if (_currentTime <= 0)
+    //            {
+    //                _audioManager.StopSfx2();
+    //                _timeOver = true;
+    //            }
+    //            else if (_currentTime > 6)
+    //            {
+    //                _audioManager.StopSfx2();
+    //                _timerEnding = false;
+    //            }
+
+    //            SetTimeText();
+    //        }
+    //        else
+    //        {
+    //            _levelController.TimeUp();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        _audioManager.StopSfx2();
+    //        _timerEnding = false;
+    //    }
+
+    //}
+
 
     #region Set
 

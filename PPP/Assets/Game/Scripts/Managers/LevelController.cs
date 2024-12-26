@@ -16,11 +16,7 @@ public class LevelController : Singleton<LevelController>
     public Power_SO _levelPolarBearBlessingSO { get; private set; }
     public Power _levelPenguinBlessing { get; private set; }
     public Power _levelPolarBearBlessing { get; private set; }
-
-    private new void Awake()
-    {
-    }
-
+    
     #region Blessings Designation 
     public void BeginBlessings()
     {
@@ -37,6 +33,7 @@ public class LevelController : Singleton<LevelController>
         countdownEvent?.Invoke();
     }
     #endregion
+    
     #region Begin Level
     public void BeginLevel()
     {

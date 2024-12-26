@@ -3,12 +3,11 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BlackScreenController : Singleton<BlackScreenController>
+public class BlackScreenController : DontDestroySingleton<BlackScreenController>
 {
     [SerializeField] private GameObject _blackScreen_Panel;
     [SerializeField] private CanvasGroup _blackScreen_CanvasGroup;
 
-    private bool _gameStart = true;
     private float _blackFadeTime => Helpers.blackFadeTime;
     private BlackScreenCircleEffectController _blackScreenCircleEffectController => BlackScreenCircleEffectController.I;
 
@@ -18,21 +17,17 @@ public class BlackScreenController : Singleton<BlackScreenController>
 
         Time.timeScale = 1;
 
+        if (SceneManager.GetActiveScene().name == "Main")
+        {
+            _blackScreen_Panel.SetActive(false);
+            _blackScreenCircleEffectController.CircleScreenOpen();
+        }
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != "Main")
-        {
-            FadeInSceneStart();
-            if (!_gameStart)
-            {
-                MainMenuUIManager.I.EndCutscene();
-            }
-            _gameStart = false;
-        }
-        else
+        if (scene.name == "Main")
         {
             _blackScreen_Panel.SetActive(false);
             _blackScreenCircleEffectController.CircleScreenOpen();
