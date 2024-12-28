@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Power_SnowCounter : Power
 {
-    public override void UsePower()
+    public override bool UsePower()
     {
-        base.UsePower();
-
-        Counter();
+        if (base.UsePower())
+        {
+            Counter();
+            return true;
+        }
+        return false;
     }
 
     private void Counter()

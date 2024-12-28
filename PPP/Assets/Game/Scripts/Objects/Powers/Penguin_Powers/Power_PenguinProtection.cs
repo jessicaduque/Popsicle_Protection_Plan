@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Power_PenguinProtection : Power
 {
-    public override void UsePower()
+    public override bool UsePower()
     {
-        base.UsePower();
-
-        Protection();
+        if (base.UsePower())
+        {
+            Protection();
+            return true;
+        }
+        return false;
     }
 
     private void Protection()

@@ -7,13 +7,15 @@ public class Power : MonoBehaviour
     
     public event Action powerActivatedEvent;
 
-    public virtual void UsePower()
+    public virtual bool UsePower()
     {
         if (!_canUsePower)
-            return;
-
+            return false;
+    
+        Debug.Log("yes 111111111");
         powerActivatedEvent?.Invoke();
         SetCanUsePower(false);
+        return true;
     }
 
     #region Set

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagPool: Snowball_Big
   prefab: {fileID: 6636926145465967143, guid: bf1b643c37adcb1488f03bef14246291, type: 3}
-  amount: 3
-  isExpandable: 0
+  amount: 6
+  isExpandable: 1

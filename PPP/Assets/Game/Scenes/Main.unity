@@ -192,7 +192,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 470bcf8b43f300543ae1b818a6eaf859, type: 2}
   - {fileID: 11400000, guid: 3c716e01b0f58094082345a545f45d39, type: 2}
   _polarBearBlessingsArray:
-  - {fileID: 11400000, guid: d12550b9c105e094abae1d90ba172340, type: 2}
+  - {fileID: 11400000, guid: d92b974a1fb3b884c81e4f546779917b, type: 2}
   - {fileID: 11400000, guid: d92b974a1fb3b884c81e4f546779917b, type: 2}
   _penguinSprite: {fileID: 479209693}
   _polarBearSprite: {fileID: 949931300}
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   t_time: {fileID: 1868175881}
-  _startTime: 15
+  _startTime: 60
 --- !u!1 &268386518
 GameObject:
   m_ObjectHideFlags: 0

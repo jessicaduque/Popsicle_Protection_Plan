@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Power_SneakySnow : Power
 {
-    public override void UsePower()
+    public override bool UsePower()
     {
-        base.UsePower();
-
-        AttacksInvisible();
+        if (base.UsePower())
+        {
+            AttacksInvisible();
+            return true;
+        }
+        return false;
     }
 
     private void AttacksInvisible()

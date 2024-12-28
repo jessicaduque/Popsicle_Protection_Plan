@@ -40,13 +40,13 @@ public class GameOverController : Singleton<GameOverController>
     private IEnumerator WaitForPanelReady()
     {
         CanvasGroup panelCG = _winnerPanel.GetComponent<CanvasGroup>();
-        panelCG.alpha = 0;
         b_replay.enabled = false;
         b_exit.enabled = false;
         while (panelCG.alpha != 1)
         {
             yield return null;
         }
+        Time.timeScale = 0;
         b_replay.onClick.AddListener(() => {
             AudioManager.I.FadeOutMusic("mainmusic");
             BlackScreenCircleEffectController.I.CircleScreenClose("Main");

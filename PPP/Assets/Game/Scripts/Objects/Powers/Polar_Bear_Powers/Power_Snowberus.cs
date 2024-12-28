@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class Power_Snowberus : Power
 {
@@ -7,45 +9,57 @@ public class Power_Snowberus : Power
     [SerializeField] private Pool _bigSnowballPoolItem;
     [SerializeField] private float _bigSnowballSpawnY;
 
-    private SpriteRenderer[] _snowFallShadowsSpriteRenderers = new SpriteRenderer[3];
-    private float _shadowFadeTime = 4;
-    private float _snowballFallTime = 1;
+    private float _timeBetweenSnowballs = 1f;
+    private float _timeForShadowToAppear = 3f;
+    private float _timeForSnowballFall = 0.4f;
 
+    private AudioManager _audioManager => AudioManager.I;
     private PoolManager _poolManager => PoolManager.I;
-    public override void UsePower()
+    public override bool UsePower()
     {
-        base.UsePower();
-
-        SnowFall();
+        if (base.UsePower())
+        {
+            Debug.Log("yes");
+            SnowFall();
+            return true;
+        }
+        return false;
     }
 
     private void SnowFall()
     {
         int shadowsArray = Random.Range(0, _snowFallShadows.Length);
-        Vector2 snowBallSpawnPoint = new Vector2(0, _bigSnowballSpawnY);
-
+        Vector2 snowBallSpawnPoint;
+        
+        
         for (int i = 0; i < 3; i++)
         {
             snowBallSpawnPoint.x = _snowFallShadows[shadowsArray].shadowPoints[i].transform.position.x;
-
-            _snowFallShadowsSpriteRenderers[i] = _snowFallShadows[shadowsArray].shadowPoints[i].GetComponent<SpriteRenderer>();
-            DOTween.To(() => _snowFallShadowsSpriteRenderers[i].color.a, x => _snowFallShadowsSpriteRenderers[i].color = new Color(0, 0, 0, x), 100, _shadowFadeTime).SetDelay(i * 0.4f);
+            snowBallSpawnPoint.y = _bigSnowballSpawnY + _snowFallShadows[shadowsArray].shadowPoints[i].transform.position.y;
+            SpriteRenderer shadowSpriteRenderer = _snowFallShadows[shadowsArray].shadowPoints[i].GetComponent<SpriteRenderer>();
+            Transform shadowTransform = shadowSpriteRenderer.transform;
+            shadowTransform.localScale = Vector3.zero;
+            
+            shadowSpriteRenderer.DOFade(1, _timeForShadowToAppear).SetDelay(i * _timeBetweenSnowballs);
+            shadowTransform.DOScale(Vector3.one * 4, _timeForShadowToAppear).SetDelay(i * _timeBetweenSnowballs);
             GameObject bigSnowball = _poolManager.GetObject(_bigSnowballPoolItem.tagPool, snowBallSpawnPoint, Quaternion.identity);
-            bigSnowball.transform.DOMoveY(_snowFallShadows[shadowsArray].shadowPoints[i].transform.position.y, _snowballFallTime).SetDelay(i * 0.4f + (_shadowFadeTime - _snowballFallTime)).OnComplete(() => SnowballHitActivate(bigSnowball));
-
+            bigSnowball.transform.DOMoveY(_snowFallShadows[shadowsArray].shadowPoints[i].transform.position.y, _timeForSnowballFall).SetDelay((i * _timeBetweenSnowballs) + (_timeForShadowToAppear - _timeForSnowballFall)).OnComplete(() =>
+            {
+                shadowSpriteRenderer.color = new Color(255, 255, 255, 0);
+                CapsuleCollider2D collider = shadowSpriteRenderer.GetComponent<CapsuleCollider2D>();
+                collider.enabled = true;
+                StartCoroutine(ColliderCooldown(collider));
+                bigSnowball.GetComponent<Animator>().SetTrigger("Break");
+                _audioManager.PlaySfx("bigsnowballhit");
+            });
         }
     }
 
-    #region Snowball Activation Control
-
-    private void SnowballHitActivate(GameObject snowball)
+    private IEnumerator ColliderCooldown(CapsuleCollider2D collider)
     {
-        snowball.GetComponent<Animator>().SetTrigger("Break");
-        snowball.GetComponent<Collider2D>().enabled = true;
-        AudioManager.I.PlaySfx("bigsnowballhit");
+        yield return new WaitForSeconds(0.2f);
+        collider.enabled = false;
     }
-
-    #endregion
 
     [System.Serializable]
     public class ShadowPoints
