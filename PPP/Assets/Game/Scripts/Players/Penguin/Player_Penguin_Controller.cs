@@ -23,7 +23,6 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     [SerializeField] private GameObject _popsicle;
 
     // Power
-    [SerializeField] private Power_SO _powerSO;
     [SerializeField] private Power _powerScript;
     LevelController _levelController => LevelController.I;
 
@@ -51,7 +50,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
         };
         _levelController.pauseEvent += DisableInputs;
         
-        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPenguinBlessingSO, _levelController._levelPenguinBlessing);
+        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPenguinBlessing);
     }
 
     private void FixedUpdate()
@@ -165,9 +164,8 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
         AnimationPopsicleControl(state);
     }
 
-    private void SetPower(Power_SO powerSO, Power power)
+    private void SetPower(Power power)
     {
-        _powerSO = powerSO;
         _powerScript = power;
     }
 

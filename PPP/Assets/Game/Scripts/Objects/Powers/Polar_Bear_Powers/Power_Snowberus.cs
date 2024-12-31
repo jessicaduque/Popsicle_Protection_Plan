@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting;
 
 public class Power_Snowberus : Power
 {

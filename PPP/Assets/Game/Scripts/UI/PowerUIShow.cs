@@ -23,10 +23,10 @@ public class PowerUIShow : MonoBehaviour
 
     private void OnDisable()
     {
-        DOTween.Kill(_tweenImageFill);
+        _tweenImageFill.Kill();
     }
 
-    public void PowerUsed()
+    private void PowerUsed()
     {
         im_thisFill.fillAmount = 0;
         RechargeBlessing();

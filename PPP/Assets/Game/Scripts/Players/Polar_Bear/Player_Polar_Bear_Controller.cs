@@ -23,7 +23,6 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
     private bool _canAttack = true;
 
     // Power
-    [SerializeField] private Power_SO _powerSO;
     [SerializeField] private Power _powerScript;
 
     LevelController _levelController => LevelController.I;
@@ -45,7 +44,7 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
         _levelController.timeUpEvent += DisableInputs;
         _levelController.pauseEvent += DisableInputs;
         
-        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPolarBearBlessingSO, _levelController._levelPolarBearBlessing);
+        _levelController.blessingsRandomizedEvent += () => SetPower(_levelController._levelPolarBearBlessing);
     }
 
     private void FixedUpdate()
@@ -165,9 +164,8 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
     #endregion
 
     #region Set
-    private void SetPower(Power_SO powerSO, Power power)
+    private void SetPower(Power power)
     {
-        _powerSO = powerSO;
         _powerScript = power;
     }
 

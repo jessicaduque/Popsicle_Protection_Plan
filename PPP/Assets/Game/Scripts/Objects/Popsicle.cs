@@ -35,8 +35,8 @@ public class Popsicle : MonoBehaviour
     private void OnDisable()
     {
         _collider.enabled = false;
-        DOTween.Kill(_tweenVelocity);
-        DOTween.Kill(_tweenAngularVelocity);
+        _tweenVelocity.Kill();
+        _tweenAngularVelocity.Kill();
         StopAllCoroutines();
     }
 

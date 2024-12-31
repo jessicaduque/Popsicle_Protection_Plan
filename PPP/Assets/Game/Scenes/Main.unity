@@ -192,8 +192,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 470bcf8b43f300543ae1b818a6eaf859, type: 2}
   - {fileID: 11400000, guid: 3c716e01b0f58094082345a545f45d39, type: 2}
   _polarBearBlessingsArray:
-  - {fileID: 11400000, guid: d92b974a1fb3b884c81e4f546779917b, type: 2}
-  - {fileID: 11400000, guid: d92b974a1fb3b884c81e4f546779917b, type: 2}
+  - {fileID: 11400000, guid: d12550b9c105e094abae1d90ba172340, type: 2}
+  - {fileID: 11400000, guid: d12550b9c105e094abae1d90ba172340, type: 2}
   _penguinSprite: {fileID: 479209693}
   _polarBearSprite: {fileID: 949931300}
   _penguinBlessingTextBackground: {fileID: 658815418}
@@ -1281,7 +1281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5667502551237025512, guid: 7b0d60dd30886d344b7423cdb96c3384, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32367,7 +32367,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1712855178}
