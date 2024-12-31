@@ -56,10 +56,16 @@ public class LevelController : Singleton<LevelController>
     public void TimeUp()
     {
         _levelState = LevelState.END;
-        if (Player_Polar_Bear_Controller.I._isDead || !Player_Penguin_Controller.I._hasPopsicle)
+        if (Player_Penguin_Controller.I._isDead || !Player_Penguin_Controller.I._hasPopsicle)
         {
             _penguinIsWinner = false;
         }
+
+        if (Player_Polar_Bear_Controller.I._isDead)
+        {
+            _penguinIsWinner = true;
+        }
+        
         timeUpEvent?.Invoke();
     }
 

@@ -10,6 +10,7 @@ public class Snowball : MonoBehaviour
         if (collision.GetComponent<IDamageable>() != null)
         {
             collision.GetComponent<IDamageable>().TakeDamage(1);
+            _poolmanager.ReturnPool(this.gameObject);
         }
     }
 }

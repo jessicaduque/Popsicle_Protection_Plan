@@ -128,8 +128,8 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
 
         if (_health <= 0)
         {
-            // Code for polar bear death
             _isDead = true;
+            TimeCountManager.I.SetTimeUp();
         }
     }
 
