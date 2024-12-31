@@ -17,6 +17,6 @@ MonoBehaviour:
   power_long_description: 
   power_sprite: {fileID: -50924073, guid: a7239d21216c8924fb2ee137916cac85, type: 3}
   power_rechargeTime: 9
-  power_useTime: 0.5
+  power_useTime: 0.3
   power_isPenguinPower: 1
   power_controllerPrefab: {fileID: 1270515982496038493, guid: bb8efd5501ed59646bea978347885d3e, type: 3}

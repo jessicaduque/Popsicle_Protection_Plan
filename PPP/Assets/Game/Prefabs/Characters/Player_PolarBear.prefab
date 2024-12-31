@@ -176,8 +176,7 @@ MonoBehaviour:
   _speed: 8
   _attackPoint: {fileID: 4633952537929090293}
   _attackPoolItem: {fileID: 11400000, guid: 44815593175f5b943a9821ed4e1e20d7, type: 2}
-  _attackCooldownTime: 0.3
-  _powerSO: {fileID: 0}
+  _attackCooldownTime: 0.2
   _powerScript: {fileID: 0}
 --- !u!95 &7091242139851254133
 Animator:

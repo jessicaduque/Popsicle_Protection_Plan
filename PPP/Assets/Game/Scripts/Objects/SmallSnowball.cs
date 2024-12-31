@@ -64,10 +64,10 @@ public class SmallSnowball : Snowball
 
     public void SetSnowBallVelocity(bool isCounter=false)
     {
-        Vector2 forceDirection = -Vector2.up;
+        Vector2 forceDirection = -Vector2.up * 1.2f;
         if (isCounter)
         {
-            forceDirection = -2 * (transform.position - _polarBearPlayer.transform.position).normalized;
+            forceDirection = -1.5f * (transform.position - _polarBearPlayer.transform.position).normalized;
         }
         _rb.velocity = (forceDirection) * _speed;
     }

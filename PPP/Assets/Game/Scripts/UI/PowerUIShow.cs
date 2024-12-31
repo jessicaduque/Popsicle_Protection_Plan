@@ -51,7 +51,7 @@ public class PowerUIShow : MonoBehaviour
             _thisPower = Player_Polar_Bear_Controller.I.GetPower();
         }
         
-        _thisPower.powerActivatedEvent += () => PowerUsed();
+        _thisPower.powerActivatedEvent += PowerUsed;
     }
     private void SetPowerDetails(float rechargeTime, Sprite blessingSprite)
     {

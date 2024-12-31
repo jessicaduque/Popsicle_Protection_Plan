@@ -144,7 +144,6 @@ public class Player_Polar_Bear_Controller : Singleton<Player_Polar_Bear_Controll
             return;
         }
         _canAttack = false;
-
         AnimationTrigger("Attack");
         StartCoroutine(AttackCoolDown());
     }

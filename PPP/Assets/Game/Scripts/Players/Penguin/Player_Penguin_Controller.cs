@@ -100,14 +100,14 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 
     #region Input
 
-    public void EnableInputs()
+    private void EnableInputs()
     {
         _playerPenguinActionsAsset.Player.Power.started += DoPowerControl;
 
         _playerPenguinActionsAsset.Player.Enable();
     }
 
-    public void DisableInputs()
+    private void DisableInputs()
     {
         _playerPenguinActionsAsset.Player.Power.started -= DoPowerControl;
 
@@ -120,6 +120,7 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 
     private void DoPowerControl(InputAction.CallbackContext obj)
     {
+        Debug.Log("use power");
         _powerScript.UsePower();
     }
 

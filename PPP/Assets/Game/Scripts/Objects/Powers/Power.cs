@@ -11,7 +11,7 @@ public class Power : MonoBehaviour
     {
         if (!_canUsePower)
             return false;
-    
+        
         powerActivatedEvent?.Invoke();
         SetCanUsePower(false);
         return true;
