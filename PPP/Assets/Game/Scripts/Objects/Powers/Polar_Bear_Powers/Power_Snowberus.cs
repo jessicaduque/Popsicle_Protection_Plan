@@ -19,7 +19,6 @@ public class Power_Snowberus : Power
     {
         if (base.UsePower())
         {
-            Debug.Log("yes");
             SnowFall();
             return true;
         }

@@ -11,6 +11,8 @@ public class PowerUIShow : MonoBehaviour
     private float _rechargeTime;
     private Image im_thisBackground;
     private Power _thisPower;
+
+    private Tween _tweenImageFill;
     LevelController _levelController => LevelController.I;
 
     private void Awake()
@@ -21,7 +23,7 @@ public class PowerUIShow : MonoBehaviour
 
     private void OnDisable()
     {
-        DOTween.KillAll();
+        DOTween.Kill(_tweenImageFill);
     }
 
     public void PowerUsed()
@@ -32,7 +34,7 @@ public class PowerUIShow : MonoBehaviour
 
     private void RechargeBlessing()
     {
-        DOTween.To(() => im_thisFill.fillAmount, x => im_thisFill.fillAmount = x, 1, _rechargeTime).OnComplete(() => _thisPower.SetCanUsePower(true));
+        _tweenImageFill = DOTween.To(() => im_thisFill.fillAmount, x => im_thisFill.fillAmount = x, 1, _rechargeTime).OnComplete(() => _thisPower.SetCanUsePower(true));
     }
 
     #region Set
@@ -48,7 +50,7 @@ public class PowerUIShow : MonoBehaviour
             SetPowerDetails(_levelController._levelPolarBearBlessingSO.power_rechargeTime, _levelController._levelPolarBearBlessingSO.power_sprite);
             _thisPower = Player_Polar_Bear_Controller.I.GetPower();
         }
-        Debug.Log("power set");
+        
         _thisPower.powerActivatedEvent += () => PowerUsed();
     }
     private void SetPowerDetails(float rechargeTime, Sprite blessingSprite)

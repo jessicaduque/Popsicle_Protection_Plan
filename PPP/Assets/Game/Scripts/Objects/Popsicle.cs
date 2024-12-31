@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
@@ -10,6 +9,8 @@ public class Popsicle : MonoBehaviour
     [SerializeField] private BoxCollider2D _collider;
     [SerializeField] private float _torqueForce;
     [SerializeField] private float _impulseForce = 4;
+    
+    private Tween _tweenVelocity, _tweenAngularVelocity;
     
     private Player_Penguin_Controller _playerPenguinController => Player_Penguin_Controller.I;
     AudioManager _audioManager => AudioManager.I;
@@ -34,7 +35,8 @@ public class Popsicle : MonoBehaviour
     private void OnDisable()
     {
         _collider.enabled = false;
-        DOTween.KillAll();
+        DOTween.Kill(_tweenVelocity);
+        DOTween.Kill(_tweenAngularVelocity);
         StopAllCoroutines();
     }
 
@@ -71,7 +73,7 @@ public class Popsicle : MonoBehaviour
         yield return new WaitForSeconds(1);
         _rb.gravityScale = 0;
         _rb.velocity = new Vector2(_rb.velocity.x, 0);
-        DOTween.To(() => _rb.angularVelocity, x => _rb.angularVelocity = x, 0, 2);
-        DOTween.To(() => _rb.velocity.x, x => _rb.velocity = new Vector2(x, 0), 0, 2);
+        _tweenAngularVelocity = DOTween.To(() => _rb.angularVelocity, x => _rb.angularVelocity = x, 0, 2);
+        _tweenVelocity = DOTween.To(() => _rb.velocity.x, x => _rb.velocity = new Vector2(x, 0), 0, 2);
     }
 }

@@ -12,7 +12,6 @@ public class Power : MonoBehaviour
         if (!_canUsePower)
             return false;
     
-        Debug.Log("yes 111111111");
         powerActivatedEvent?.Invoke();
         SetCanUsePower(false);
         return true;
