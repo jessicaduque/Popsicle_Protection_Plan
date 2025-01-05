@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96bf64fbb83ae494fb53541c5014714f, type: 3}
+  m_Name: Penguin_Dummys
+  m_EditorClassIdentifier: 
+  tagPool: Penguin_Dummys
+  prefab: {fileID: 5577162347925917730, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+  amount: 40
+  isExpandable: 1

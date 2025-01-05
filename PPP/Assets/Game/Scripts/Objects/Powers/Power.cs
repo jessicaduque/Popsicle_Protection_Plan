@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-public class Power : MonoBehaviour
+public abstract class Power : MonoBehaviour
 {
     private bool _canUsePower = true;
-    
+    protected float UsageTime;
     public event Action powerActivatedEvent;
 
     public virtual bool UsePower()

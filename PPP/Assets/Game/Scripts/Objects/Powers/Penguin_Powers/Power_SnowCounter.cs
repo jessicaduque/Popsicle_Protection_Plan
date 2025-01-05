@@ -6,7 +6,6 @@ public class Power_SnowCounter : Power
 {
     private GameObject _counterSlash;
     private SpriteRenderer _counterSlashRenderer;
-    private float _counterTime;
 
     private AudioManager _audioManager => AudioManager.I;
 
@@ -14,7 +13,7 @@ public class Power_SnowCounter : Power
     {
         _counterSlash = Player_Penguin_Controller.I.gameObject.transform.Find("CounterSlash").gameObject;
         _counterSlashRenderer = _counterSlash.GetComponent<SpriteRenderer>();
-        _counterTime = LevelController.I._levelPenguinBlessingSO.power_useTime;
+        UsageTime = LevelController.I._levelPenguinBlessingSO.power_useTime;
     }
 
     public override bool UsePower()
@@ -38,7 +37,7 @@ public class Power_SnowCounter : Power
 
     private IEnumerator CounterTimer()
     {
-        yield return new WaitForSeconds(_counterTime);
+        yield return new WaitForSeconds(UsageTime);
         
         _counterSlashRenderer.DOFade(0, 0.2f).OnComplete(delegate { _counterSlash.SetActive(false); });
     }

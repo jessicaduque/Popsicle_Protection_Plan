@@ -4,11 +4,10 @@ using UnityEngine;
 public class Power_SneakySnow : Power
 {
     private bool _sneakySnowActivated;
-    private float _sneakySnowTime;
 
     private void Start()
     {
-        _sneakySnowTime = LevelController.I._levelPolarBearBlessingSO.power_useTime;
+        UsageTime = LevelController.I._levelPolarBearBlessingSO.power_useTime;
 
         foreach (SmallSnowball snowball in FindObjectsOfType<SmallSnowball>(true))
         {
@@ -34,7 +33,7 @@ public class Power_SneakySnow : Power
 
     private IEnumerator SneakySnowUsageTimer()
     {
-        yield return new WaitForSeconds(_sneakySnowTime);
+        yield return new WaitForSeconds(UsageTime);
         SetSneakySnowActivated(false);
     }
     

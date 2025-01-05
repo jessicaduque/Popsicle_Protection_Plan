@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -189,8 +188,8 @@ MonoBehaviour:
   _penguinSpriteRandomizer: {fileID: 903233644}
   _polarBearSpriteRandomizer: {fileID: 1045969227}
   _penguinBlessingsArray:
-  - {fileID: 11400000, guid: 3c716e01b0f58094082345a545f45d39, type: 2}
-  - {fileID: 11400000, guid: 3c716e01b0f58094082345a545f45d39, type: 2}
+  - {fileID: 11400000, guid: 470bcf8b43f300543ae1b818a6eaf859, type: 2}
+  - {fileID: 11400000, guid: 470bcf8b43f300543ae1b818a6eaf859, type: 2}
   _polarBearBlessingsArray:
   - {fileID: 11400000, guid: d12550b9c105e094abae1d90ba172340, type: 2}
   - {fileID: 11400000, guid: d92b974a1fb3b884c81e4f546779917b, type: 2}
@@ -32976,83 +32975,10 @@ MonoBehaviour:
   _hudPanel: {fileID: 302840901}
   _gameOverPanel: {fileID: 1206190410}
   _pausePanel: {fileID: 1598142141}
---- !u!1001 &1414402673
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1865490013}
-    m_Modifications:
-    - target: {fileID: 2298983245792686744, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: _popsicle
-      value: 
-      objectReference: {fileID: 1958102846}
-    - target: {fileID: 2420761655202412930, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420761655202412930, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420761655202412930, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420761655202412930, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420761655202412930, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420761655202412930, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420761655202412930, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420761655202412930, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420761655202412930, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420761655202412930, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3856431074328503684, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_Name
-      value: Player_Penguin
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860485605408520392, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860485605408520392, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860485605408520392, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
 --- !u!4 &1414402674 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2420761655202412930, guid: fd4a2559bf9bc9545a42baf2dc46647d, type: 3}
-  m_PrefabInstance: {fileID: 1414402673}
+  m_CorrespondingSourceObject: {fileID: 6447608599850503204, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+  m_PrefabInstance: {fileID: 3816139296056739478}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1457174104
 GameObject:
@@ -34850,6 +34776,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &3816139296056739478
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1865490013}
+    m_Modifications:
+    - target: {fileID: 5577162347925917730, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: m_Name
+      value: Player_Penguin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447608599850503204, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447608599850503204, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447608599850503204, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447608599850503204, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447608599850503204, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447608599850503204, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447608599850503204, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447608599850503204, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447608599850503204, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447608599850503204, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423450812705277758, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
+      propertyPath: _popsicle
+      value: 
+      objectReference: {fileID: 1958102846}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ae90fb023595034896eff5589e4ce9d, type: 3}
 --- !u!1001 &6178633309304429695
 PrefabInstance:
   m_ObjectHideFlags: 0
