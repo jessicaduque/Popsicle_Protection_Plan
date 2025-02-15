@@ -12,7 +12,7 @@ public class PowerUIShow : MonoBehaviour
     private Image im_thisBackground;
     private Power _thisPower;
 
-    private Tween _tweenImageFill;
+    private Sequence _tweenImageFill;
     LevelController _levelController => LevelController.I;
 
     private void Awake()
@@ -34,7 +34,13 @@ public class PowerUIShow : MonoBehaviour
 
     private void RechargeBlessing()
     {
-        _tweenImageFill = DOTween.To(() => im_thisFill.fillAmount, x => im_thisFill.fillAmount = x, 1, _rechargeTime).OnComplete(() => _thisPower.SetCanUsePower(true));
+        _tweenImageFill = DOTween.Sequence();
+        _tweenImageFill.Join(DOTween.To(() => im_thisFill.fillAmount, x => im_thisFill.fillAmount = x, 1, _rechargeTime));
+        _tweenImageFill.InsertCallback(_rechargeTime - 0.6f, () =>
+        {
+            _thisPower.SetCanUsePower(true);
+            _tweenImageFill.Kill();
+        });
     }
 
     #region Set

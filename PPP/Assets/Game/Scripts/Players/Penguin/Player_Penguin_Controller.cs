@@ -120,7 +120,6 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
 
     private void DoPowerControl(InputAction.CallbackContext obj)
     {
-        Debug.Log("use power");
         _powerScript.UsePower();
     }
 
@@ -180,6 +179,11 @@ public class Player_Penguin_Controller : Singleton<Player_Penguin_Controller>, I
     public int GetVelocityX()
     {
         return (_move.ReadValue<Vector2>().x > 0 ? -1 : 1);
+    }
+
+    public float GetSpeed()
+    {
+        return _speed;
     }
 
     #endregion

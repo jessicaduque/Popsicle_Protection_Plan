@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2303299fc60205641b10ee03ce2e26db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  penguinDummy: {fileID: 11400000, guid: a7560cdde0f545742875ec5693ed2389, type: 2}
+  amountPenguinDummies: 200
+  xPositions: {x: -15, y: 15}
+  yLimits: {x: 1, y: -3.5}
