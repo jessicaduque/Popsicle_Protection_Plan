@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
@@ -9,6 +10,14 @@ public class HowToPlayUI : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI _pageTitle;
     [SerializeField] TextMeshProUGUI _pageNumber;
+
+    private void OnEnable()
+    {
+        _firstPageCG.alpha = 1;
+        _secondPageCG.alpha = 0;
+        _pageTitle.text = "How To Play";
+        _pageNumber.text = "1/2";
+    }
 
     public void ChangePage(bool goToFirst)
     {

@@ -29,7 +29,6 @@ public class GameController : DontDestroySingleton<GameController>
     {
         if (scene.name == "MainMenu")
         {
-            Debug.Log(Time.timeScale);
             MainMenuUIManager.I.DisableCutscene();
             _blackScreenController.FadeInSceneStart();
         }
