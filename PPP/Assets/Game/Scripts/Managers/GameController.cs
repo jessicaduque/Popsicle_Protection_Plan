@@ -10,7 +10,9 @@ public class GameController : DontDestroySingleton<GameController>
     private void Start()
     {
         _blackScreenController.FadeInSceneStart();
-        
+#if PLATFORM_WEBGL
+        MainMenuUIManager.I.StartCoroutine(MainMenuUIManager.I.StartCutscene());
+#else
         if (!PlayerPrefs.HasKey("FirstPlay") || PlayerPrefs.GetInt("FirstPlay") == 0)
         {
             MainMenuUIManager.I.StartCoroutine(MainMenuUIManager.I.StartCutscene());
@@ -20,7 +22,7 @@ public class GameController : DontDestroySingleton<GameController>
         {
             MainMenuUIManager.I.DisableCutscene();
         }
-        
+#endif    
         
         SceneManager.sceneLoaded += OnSceneLoaded;
     }

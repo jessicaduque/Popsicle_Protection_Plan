@@ -35,9 +35,9 @@ public class BlessingsDesignationController : Singleton<BlessingsDesignationCont
 
         _penguinSpriteRandomizer.SpriteRandomizedEvent += () => StartCoroutine(RandomizePowersFinalAnimation());
 
-        _penguinChosenBlessing = Random.Range(0, _penguinBlessingsArray.Length);
-        _polarBearChosenBlessing = Random.Range(0, _polarBearBlessingsArray.Length);
-
+        _penguinChosenBlessing = new System.Random().Next(0, _penguinBlessingsArray.Length);
+        _polarBearChosenBlessing = new System.Random().Next(0, _polarBearBlessingsArray.Length);
+        
         _levelController.SetLevelBlessings(_penguinBlessingsArray[_penguinChosenBlessing], _polarBearBlessingsArray[_polarBearChosenBlessing]);
 
         StartCoroutine(RandomizePowersStart());
